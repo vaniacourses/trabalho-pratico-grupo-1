@@ -68,4 +68,19 @@
     nbproject/build-impl.xml file. 
 
     -->
+    <property name="lib.dir" value="lib"/>
+
+    <path id="project.classpath">
+        <fileset dir="${lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="test">
+        <mkdir dir="build/test"/>
+        <javac srcdir="src" destdir="build/test" classpathref="project.classpath"/>
+        <java classname="org.junit.runner.JUnitCore" fork="true" classpathref="project.classpath">
+            <arg value="YourTestClass"/>
+        </java>
+    </target>
 </project>

@@ -1,3 +1,5 @@
+package models;
+
 import models.Features;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
