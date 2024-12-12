@@ -1,6 +1,8 @@
  **Link do Plano de Teste do Trablho de Qualidade e Software:** https://docs.google.com/document/d/1lnzZC4VXNae8rFXyqssoALBdz6hEFPxV/edit
 
  **Os testes manuais foram executados pelo testelink:**
+
+ 
  **Nome do Grupo: QT A1:Grupo 1** 
 
 
