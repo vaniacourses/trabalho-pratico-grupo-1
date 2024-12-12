@@ -1,0 +1,433 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><title>testspec Grupo 1</title>
+<link type="text/css" rel="stylesheet" href="http://vania.ic.uff.br/testlink/gui/themes/default/css/tl_documents.css" />
+<style type="text/css" media="print">.notprintable { display:none;}</style>
+</head>
+<body>
+<div>
+<div style="float:right;">TestLink Community [configure $tlCfg-&gt;document_generator-&gt;company_name]</div>
+<div>&nbsp;</div><hr />
+<p style="text-align: center;"><img alt="TestLink logo" title="configure using $tlCfg->document_generator->company_logo"  width= height= src="http://vania.ic.uff.br/testlink/gui/themes/default/images/tl-logo-transparent-25.png" /></p></div>
+<div class="doc_title"><p>Especificar Testes</p></div>
+<div class="doc_title" style="text-align:left;margin: auto;"><p>Projecto de Teste: Grupo 1</p></div>
+<div class="summary"><p id="printedby">Impresso por TestLink em 11/12/2024</p></div>
+<div class="pagefooter" id="copyright">2012 &copy; TestLink Community</div>
+<h1 class="general" style="page-break-before: always">RESUMO</h1><div class="toc"><p style="padding-left: 20px;"><b><a href="#toc_1">1.Flight Booking (gerado automaticamente da Especificação de Requisitos.)</a></b></p>
+<p style="padding-left: 45px;"><a href="#toc_tc610">QT A1-1: Teste Login [1]</a></p><p style="padding-left: 45px;"><a href="#toc_tc613">QT A1-2: Teste Login [2]</a></p><p style="padding-left: 45px;"><a href="#toc_tc620">QT A1-3: Teste Login [3]</a></p><p style="padding-left: 45px;"><a href="#toc_tc624">QT A1-4: Test Button going to right page [1]</a></p><p style="padding-left: 45px;"><a href="#toc_tc626">QT A1-5: Logout [1]</a></p><p style="padding-left: 45px;"><a href="#toc_tc628">QT A1-6: Logout [2]</a></p><p style="padding-left: 45px;"><a href="#toc_tc630">QT A1-7: Testar Login</a></p><p style="padding-left: 45px;"><a href="#toc_tc632">QT A1-8: Logout [3]</a></p><p style="padding-left: 45px;"><a href="#toc_tc640">QT A1-9: Redirect new page [1]</a></p><p style="padding-left: 45px;"><a href="#toc_tc652">QT A1-10: Logout [4]</a></p><p style="padding-left: 45px;"><a href="#toc_tc656">QT A1-11: Admin should be able to create and update the features [1]</a></p><p style="padding-left: 45px;"><a href="#toc_tc663">QT A1-13: Receipt of email confirming seats [1]</a></p><p style="padding-left: 45px;"><a href="#toc_tc671">QT A1-14: Manage Flight Seats [1]</a></p><br/><p style="padding-left: 20px;"><b><a href="#toc_2">2.Test Suite for Seat Management</a></b></p>
+<p style="padding-left: 45px;"><a href="#toc_tc658">QT A1-12: Check Seat Resource Change Completion</a></p><br/><p style="padding-left: 20px;"><b><a href="#toc_3">3.Test Suite for Custummer</a></b></p>
+<p style="padding-left: 45px;"><a href="#toc_tc709">QT A1-15: Search Flights</a></p><p style="padding-left: 45px;"><a href="#toc_tc727">QT A1-16: Select Itinerary</a></p><p style="padding-left: 45px;"><a href="#toc_tc748">QT A1-17: Current Bookings</a></p></div><a name='toc_1'></a>
+<h1 class='doclevel'>1.Suite de Testes : Flight Booking (gerado automaticamente da Especificação de Requisitos.)</h1>
+<div>Test Cases in the Test Suite are generated from Requirements. A refinement of test scenario is highly recommended.</div><a name="toc_tc610"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Caso de Teste QT A1-1: Teste Login [1]&nbsp;<span style="font-size: 80%;">[Versão : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Autor:</span></td><td colspan="3">suhettsavio</td></tr>
+<tr><td colspan="4"><span class="label">Objetivo do Teste::</span><br /><b>The Test Case was generated from the assigned requirement <a href="javascript:openLinkedReqVersionWindow(606,607)">"Teste Login" (version 1)</a>.</b><br /></td></tr><tr><td width="20%" valign="top"><span class="label"><br />Tipo de Execução:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimativa da duração da Execução (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Prioridade:</span></td><td colspan="3">Média</td></tr>
+<tr><td colspan="4"></td></tr><tr><td width="20%" valign="top"><span class="label">Requisitos</span><td colspan="3">&nbsp;Nenhum<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Palavras Chave:</span></td><td colspan="3">&nbsp;Nenhum<br/></td></tr>
+</table>
+</div>
+<a name="toc_tc613"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Caso de Teste QT A1-2: Teste Login [2]&nbsp;<span style="font-size: 80%;">[Versão : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Autor:</span></td><td colspan="3">suhettsavio</td></tr>
+<tr><td colspan="4"><span class="label">Objetivo do Teste::</span><br /><b>The Test Case was generated from the assigned requirement <a href="javascript:openLinkedReqVersionWindow(606,607)">"Teste Login" (version 1)</a>.</b><br /></td></tr><tr><td width="20%" valign="top"><span class="label"><br />Tipo de Execução:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimativa da duração da Execução (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Prioridade:</span></td><td colspan="3">Média</td></tr>
+<tr><td colspan="4"></td></tr><tr><td width="20%" valign="top"><span class="label">Requisitos</span><td colspan="3">&nbsp;Nenhum<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Palavras Chave:</span></td><td colspan="3">&nbsp;Nenhum<br/></td></tr>
+</table>
+</div>
+<a name="toc_tc620"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Caso de Teste QT A1-3: Teste Login [3]&nbsp;<span style="font-size: 80%;">[Versão : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Autor:</span></td><td colspan="3">suhettsavio</td></tr>
+<tr><td colspan="4"><span class="label">Objetivo do Teste::</span><br /><b>The Test Case was generated from the assigned requirement <a href="javascript:openLinkedReqVersionWindow(606,607)">"Teste Login" (version 1)</a>.</b><br /></td></tr><tr><td width="20%" valign="top"><span class="label"><br />Tipo de Execução:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimativa da duração da Execução (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Prioridade:</span></td><td colspan="3">Média</td></tr>
+<tr><td colspan="4"></td></tr><tr><td width="20%" valign="top"><span class="label">Requisitos</span><td colspan="3">&nbsp;Nenhum<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Palavras Chave:</span></td><td colspan="3">&nbsp;Nenhum<br/></td></tr>
+</table>
+</div>
+<a name="toc_tc624"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Caso de Teste QT A1-4: Test Button going to right page [1]&nbsp;<span style="font-size: 80%;">[Versão : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Autor:</span></td><td colspan="3">0xlancellot</td></tr>
+<tr><td colspan="4"><span class="label">Objetivo do Teste::</span><br /><b>The Test Case was generated from the assigned requirement <a href="javascript:openLinkedReqVersionWindow(617,618)">"Test Button going to right page" (version 1)</a>.</b><br /></td></tr><tr><td width="20%" valign="top"><span class="label"><br />Tipo de Execução:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimativa da duração da Execução (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Prioridade:</span></td><td colspan="3">Média</td></tr>
+<tr><td colspan="4"></td></tr><tr><td width="20%" valign="top"><span class="label">Requisitos</span><td colspan="3">&nbsp;Nenhum<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Palavras Chave:</span></td><td colspan="3">&nbsp;Nenhum<br/></td></tr>
+</table>
+</div>
+<a name="toc_tc626"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Caso de Teste QT A1-5: Logout [1]&nbsp;<span style="font-size: 80%;">[Versão : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Autor:</span></td><td colspan="3">eduardosaldumbides</td></tr>
+<tr><td colspan="4"><span class="label">Objetivo do Teste::</span><br /><b>The Test Case was generated from the assigned requirement <a href="javascript:openLinkedReqVersionWindow(622,623)">"Logout" (version 1)</a>.</b><br /></td></tr><tr><td width="20%" valign="top"><span class="label"><br />Tipo de Execução:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimativa da duração da Execução (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Prioridade:</span></td><td colspan="3">Média</td></tr>
+<tr><td colspan="4"></td></tr><tr><td width="20%" valign="top"><span class="label">Requisitos</span><td colspan="3">&nbsp;Nenhum<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Palavras Chave:</span></td><td colspan="3">&nbsp;Nenhum<br/></td></tr>
+</table>
+</div>
+<a name="toc_tc628"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Caso de Teste QT A1-6: Logout [2]&nbsp;<span style="font-size: 80%;">[Versão : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Autor:</span></td><td colspan="3">eduardosaldumbides</td></tr>
+<tr><td colspan="4"><span class="label">Objetivo do Teste::</span><br /><b>The Test Case was generated from the assigned requirement <a href="javascript:openLinkedReqVersionWindow(622,623)">"Logout" (version 1)</a>.</b><br /></td></tr><tr><td width="20%" valign="top"><span class="label"><br />Tipo de Execução:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimativa da duração da Execução (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Prioridade:</span></td><td colspan="3">Média</td></tr>
+<tr><td colspan="4"></td></tr><tr><td width="20%" valign="top"><span class="label">Requisitos</span><td colspan="3">&nbsp;Nenhum<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Palavras Chave:</span></td><td colspan="3">&nbsp;Nenhum<br/></td></tr>
+</table>
+</div>
+<a name="toc_tc630"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Caso de Teste QT A1-7: Testar Login&nbsp;<span style="font-size: 80%;">[Versão : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Autor:</span></td><td colspan="3">suhettsavio</td></tr>
+<tr><td colspan="4"><span class="label">Objetivo do Teste::</span><br /><p><strong>The Test Case was generated from the assigned requirement <a href="javascript:openLinkedReqVersionWindow(606,607)">&quot;Teste Login&quot; (version 1)</a>.</strong></p>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Ações do Passo:</span></td><td><span class="label">Resultados Esperados::</span></td></tr><tr><td width="5">1</td><td><p>#1 Clicar no Bot&atilde;o &quot;Login&quot;.<br />
+#2 Entrar com as credenciais de Login (Username e Senha).<br />
+#3 Clicar no bot&atilde;o &quot;Sign-in&quot; para continuar com o login.<br />
+<br />
+<br />
+&nbsp;</p>
+</td><td><p>Ao clicar no bot&atilde;o &quot;Sign-in&quot; o us&aacute;rio dever&aacute; entrar na pagina, sem recebimento de erros.<br />
+<br />
+Se o login estiver divergente dos dados cadastrados dever&aacute; aparecer a mensagem abaixo:<br />
+<img src="data:image/png;base64,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" /><br />
+&nbsp;</p>
+</td></tr><tr><td width="5">2</td><td></td><td></td></tr><tr><td width="20%" valign="top"><span class="label"><br />Tipo de Execução:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimativa da duração da Execução (min):</span></td><td colspan="3">3.00</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Prioridade:</span></td><td colspan="3">Alta</td></tr>
+<tr><td colspan="4"></td></tr><tr><td width="20%" valign="top"><span class="label">Requisitos</span><td colspan="3">REQ001:  Login [Versão: 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Palavras Chave:</span></td><td colspan="3">&nbsp;Nenhum<br/></td></tr>
+</table>
+</div>
+<a name="toc_tc632"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Caso de Teste QT A1-8: Logout [3]&nbsp;<span style="font-size: 80%;">[Versão : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Autor:</span></td><td colspan="3">eduardosaldumbides</td></tr>
+<tr><td colspan="4"><span class="label">Objetivo do Teste::</span><br /><b>The Test Case was generated from the assigned requirement <a href="javascript:openLinkedReqVersionWindow(622,623)">"Logout" (version 1)</a>.</b><br /></td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Ações do Passo:</span></td><td><span class="label">Resultados Esperados::</span></td></tr><tr><td width="5">1</td><td><p>Valida&ccedil;&atilde;o que o usu&aacute;rio consegue realizar o logout de sua conta com sucesso, garantindo que n&atilde;o tenha mais acesso aos dados de sua conta ap&oacute;s logout.</p>
+
+<p>1. O usu&aacute;rio deve estar logado em sua conta.</p>
+
+<p>2. O usu&aacute;rio deve estar na p&aacute;gina que possua a op&ccedil;&atilde;o de logout.</p>
+
+<p>3. O usu&aacute;rio dever&aacute; clicar na op&ccedil;&atilde;o de logout para sair da sua conta.</p>
+
+<p>4. Ap&oacute;s clicar na op&ccedil;&atilde;o, dever&aacute; voltar para a p&aacute;gina inicial para realiza&ccedil;&atilde;o do login.</p>
+</td><td><p>O resultado esperado &eacute; ter o logout efetuado, ap&oacute;s o passo a passo ser seguido conforme descrito no documento do projeto.</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/973047012197019750/1300618549076824084/image.png?ex=67217eea&amp;is=67202d6a&amp;hm=ebaa7ad0bc62d33935683a899399587e8aebcbb6b75c5afb5f7595c36992c388&amp;=" /></p>
+
+<p><img src="https://cdn.discordapp.com/attachments/973047012197019750/1300619124258635846/image.png?ex=67217f73&amp;is=67202df3&amp;hm=f256eb37bd801a4e0a3b95fa9bca47d52fa6103e8fcaa1799ed4bd8bdc88c040&amp;=" /></p>
+
+<p><img src="https://cdn.discordapp.com/attachments/973047012197019750/1300619166935547951/image.png?ex=67217f7d&amp;is=67202dfd&amp;hm=7d37863f7e4c9e26b65b10d23ec4768fef9f4b5bce1521ad8a2f6413ba689e86&amp;=" /></p>
+
+<p>&nbsp;</p>
+</td></tr><tr><td width="5">2</td><td></td><td></td></tr><tr><td width="5">3</td><td></td><td></td></tr><tr><td width="20%" valign="top"><span class="label"><br />Tipo de Execução:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimativa da duração da Execução (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Prioridade:</span></td><td colspan="3">Média</td></tr>
+<tr><td colspan="4"></td></tr><tr><td width="20%" valign="top"><span class="label">Requisitos</span><td colspan="3">REQ003:  Logout [Versão: 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Palavras Chave:</span></td><td colspan="3">&nbsp;Nenhum<br/></td></tr>
+</table>
+</div>
+<a name="toc_tc640"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Caso de Teste QT A1-9: Redirect new page [1]&nbsp;<span style="font-size: 80%;">[Versão : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Autor:</span></td><td colspan="3">0xlancellot</td></tr>
+<tr><td colspan="4"><span class="label">Objetivo do Teste::</span><br /><b>The Test Case was generated from the assigned requirement <a href="javascript:openLinkedReqVersionWindow(617,618)">"Redirect new page" (version 1)</a>.</b><br /></td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Ações do Passo:</span></td><td><span class="label">Resultados Esperados::</span></td></tr><tr><td width="5">1</td><td><p>CUSTOMER<br />
+1. Sem buttons adicionais para essa role.<br />
+<br />
+MANAGER<br />
+1. button &#39;Approve Features&#39;<br />
+2. button &#39;Aprove Seats&#39;<br />
+3. button &#39;Logout&#39;<br />
+<br />
+ADMIN:<br />
+1. button &#39;Change Features&#39;<br />
+2. button &#39;Set Seats&#39;<br />
+3. button &#39;Logout&#39;<br />
+<br />
+<img alt="features.png" src="https://github.com/repo-software-testing-courses/Flight-Booking-System-JavaServlets_App/blob/master/Images/features.png?raw=true" /><br />
+<br />
+<br />
+<br />
+<br />
+&nbsp;</p>
+</td><td><p>LOGIN com CUSTOMER:<br />
+1. N&atilde;o&nbsp;possui buttons redirecion&aacute;veis.<br />
+<br />
+LOGIN com MANAGER:<br />
+1. P&aacute;gina redirecionada para ApproveFeatures.jsp<br />
+2. P&aacute;gina redirecionada para ApproveSeats.jsp<br />
+3. P&aacute;gina redirecionada para Logout. ( Desconecta conta )<br />
+<br />
+LOGIN com ADMIN:<br />
+1. P&aacute;gina redirecionada para ChangeFeatures.jsp.<br />
+2. P&aacute;gina redirecionada para SetSeats.jsp<br />
+3. P&aacute;gina redirecionada para Logout. ( Desconecta conta )<br />
+<br />
+<br />
+&nbsp;</p>
+</td></tr><tr><td width="5">2</td><td></td><td></td></tr><tr><td width="5">3</td><td></td><td></td></tr><tr><td width="20%" valign="top"><span class="label"><br />Tipo de Execução:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimativa da duração da Execução (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Prioridade:</span></td><td colspan="3">Média</td></tr>
+<tr><td colspan="4"></td></tr><tr><td width="20%" valign="top"><span class="label">Requisitos</span><td colspan="3">REQ002:  Redirect new page [Versão: 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Palavras Chave:</span></td><td colspan="3">&nbsp;Nenhum<br/></td></tr>
+</table>
+</div>
+<a name="toc_tc652"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Caso de Teste QT A1-10: Logout [4]&nbsp;<span style="font-size: 80%;">[Versão : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Autor:</span></td><td colspan="3">eduardosaldumbides</td></tr>
+<tr><td colspan="4"><span class="label">Objetivo do Teste::</span><br /><b>The Test Case was generated from the assigned requirement <a href="javascript:openLinkedReqVersionWindow(622,623)">"Logout" (version 1)</a>.</b><br /></td></tr><tr><td width="20%" valign="top"><span class="label"><br />Tipo de Execução:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimativa da duração da Execução (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Prioridade:</span></td><td colspan="3">Média</td></tr>
+<tr><td colspan="4"></td></tr><tr><td width="20%" valign="top"><span class="label">Requisitos</span><td colspan="3">&nbsp;Nenhum<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Palavras Chave:</span></td><td colspan="3">&nbsp;Nenhum<br/></td></tr>
+</table>
+</div>
+<a name="toc_tc656"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Caso de Teste QT A1-11: Admin should be able to create and update the features [1]&nbsp;<span style="font-size: 80%;">[Versão : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Autor:</span></td><td colspan="3">suhettsavio</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Editado última vez por:</span></td><td colspan="3">0xlancellot</td></tr>
+<tr><td colspan="4"><span class="label">Objetivo do Teste::</span><br /><b>The Test Case was generated from the assigned requirement <a href="javascript:openLinkedReqVersionWindow(637,638)">"Admin should be able to create and update the features" (version 1)</a>.</b><br /></td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Ações do Passo:</span></td><td><span class="label">Resultados Esperados::</span></td></tr><tr><td width="5">1</td><td><p><br />
+ADMIN:<br />
+1. button &#39;Change Features&#39;<br />
+2. button &#39;Set Seats&#39;<br />
+3. button &#39;Logout&#39;<br />
+<br />
+<img alt="features.png" src="https://github.com/repo-software-testing-courses/Flight-Booking-System-JavaServlets_App/blob/master/Images/features.png?raw=true" /></p>
+</td><td><p>LOGIN com ADMIN:<br />
+1. Deve ser poss&iacute;vel ver buttons com &#39;Change&nbsp;Features&#39; |&nbsp;&#39;Set Seats&#39; |&nbsp;&nbsp;&#39;Logout&#39;<br />
+2. Ao clicar no Change&nbsp;Features deve ser poss&iacute;vel alterar features cadastradas na p&aacute;gina Change&nbsp;Features.jsp onde &eacute; poss&iacute;vel&nbsp;alterar as features.<br />
+3. Deve ser poss&iacute;vel clicar no&nbsp;Set Seats, onde &eacute; poss&iacute;vel ir na p&aacute;gina setSeats.jsp e consegue setar os assentos do voo. SetSeats.jsp<br />
+4. Ao clicar no button de LOGOUT, deve ser poss&iacute;vel desconectar a conta.<br />
+&nbsp;</p>
+</td></tr><tr><td width="5">2</td><td></td><td></td></tr><tr><td width="20%" valign="top"><span class="label"><br />Tipo de Execução:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimativa da duração da Execução (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Prioridade:</span></td><td colspan="3">Média</td></tr>
+<tr><td colspan="4"></td></tr><tr><td width="20%" valign="top"><span class="label">Requisitos</span><td colspan="3">REQ004:  Admin should be able to create and update the features [Versão: 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Palavras Chave:</span></td><td colspan="3">&nbsp;Nenhum<br/></td></tr>
+</table>
+</div>
+<a name="toc_tc663"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Caso de Teste QT A1-13: Receipt of email confirming seats [1]&nbsp;<span style="font-size: 80%;">[Versão : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Autor:</span></td><td colspan="3">eduardosaldumbides</td></tr>
+<tr><td colspan="4"><span class="label">Objetivo do Teste::</span><br /><b>The Test Case was generated from the assigned requirement <a href="javascript:openLinkedReqVersionWindow(647,648)">"Receipt of email confirming seats" (version 1)</a>.</b><br /></td></tr><tr><td width="20%" valign="top"><span class="label"><br />Tipo de Execução:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimativa da duração da Execução (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Prioridade:</span></td><td colspan="3">Média</td></tr>
+<tr><td colspan="4"></td></tr><tr><td width="20%" valign="top"><span class="label">Requisitos</span><td colspan="3">REQ005:  Receipt of email confirming seats [Versão: 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Palavras Chave:</span></td><td colspan="3">&nbsp;Nenhum<br/></td></tr>
+</table>
+</div>
+<a name="toc_tc671"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Caso de Teste QT A1-14: Manage Flight Seats [1]&nbsp;<span style="font-size: 80%;">[Versão : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Autor:</span></td><td colspan="3">0xlancellot</td></tr>
+<tr><td colspan="4"><span class="label">Objetivo do Teste::</span><br /><b>The Test Case was generated from the assigned requirement <a href="javascript:openLinkedReqVersionWindow(654,655)">"Manage Flight Seats" (version 1)</a>.</b><br /></td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Ações do Passo:</span></td><td><span class="label">Resultados Esperados::</span></td></tr><tr><td width="5">1</td><td><p>MANAGER<br />
+1. button &#39;Approve Features&#39;<br />
+2. button &#39;Aprove Seats&#39;<br />
+3. button &#39;Logout&#39;<br />
+<br />
+<br />
+&nbsp;</p>
+</td><td><p>LOGIN com MANAGER:<br />
+1. Deve ser poss&iacute;vel ver buttons com &#39;Approve Features&#39; |&nbsp;&#39;Aprove Seats&#39; |&nbsp;&nbsp;&#39;Logout&#39;<br />
+2. Ao clicar no Approve Features deve ser poss&iacute;vel aprovar as Mudan&ccedil;as que o admin solicitou.<br />
+ApproveFeatures.jsp ( Se tiver algo para aprovar ele pode aprovar<br />
+3. Deve ser poss&iacute;vel clicar no&nbsp;Aprove Seats, onde &eacute; poss&iacute;vel aprovar as mudan&ccedil;as que o admin propos, ApproveSeats.jsp ( Se tiver algo para aprovar ele pode aprovar<br />
+4. Ao clicar no button de LOGOUT, deve ser poss&iacute;vel desconectar a conta.</p>
+</td></tr><tr><td width="5">2</td><td></td><td></td></tr><tr><td width="5">3</td><td></td><td></td></tr><tr><td width="5">4</td><td></td><td></td></tr><tr><td width="20%" valign="top"><span class="label"><br />Tipo de Execução:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimativa da duração da Execução (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Prioridade:</span></td><td colspan="3">Média</td></tr>
+<tr><td colspan="4"></td></tr><tr><td width="20%" valign="top"><span class="label">Requisitos</span><td colspan="3">REQ006:  Manage Feature Flight Seats [Versão: 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Palavras Chave:</span></td><td colspan="3">&nbsp;Nenhum<br/></td></tr>
+</table>
+</div>
+<a name='toc_2'></a>
+<h1 class='doclevel'>2.Suite de Testes : Test Suite for Seat Management</h1>
+<div><p>Validar todas as funcionalidades relacionadas &agrave; cria&ccedil;&atilde;o, atualiza&ccedil;&atilde;o e aprova&ccedil;&atilde;o de recursos de assentos.</p>
+</div><a name="toc_tc658"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Caso de Teste QT A1-12: Check Seat Resource Change Completion&nbsp;<span style="font-size: 80%;">[Versão : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Autor:</span></td><td colspan="3">rafaela</td></tr>
+<tr><td colspan="4"><span class="label">Objetivo do Teste::</span><br /><p>Garantir que o administrador possa criar ou atualizar recursos de assentos e que essas altera&ccedil;&otilde;es sejam aprovadas pelo gerente.<br />
+&nbsp;</p>
+</td></tr><tr><td colspan="4"><span class="label">Pré-condições:</span><br /><ol>
+	<li>O administrador deve estar autenticado no sistema.</li>
+	<li>O gerente deve estar autenticado no sistema.</li>
+	<li>O administrador j&aacute; deve ter definido os assentos e pre&ccedil;os iniciais.</li>
+</ol>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Ações do Passo:</span></td><td><span class="label">Resultados Esperados::</span></td></tr><tr><td width="5">1</td><td><p>Login como Administrador</p>
+
+<ul>
+	<li>Acessar a p&aacute;gina de login.</li>
+	<li>Inserir credenciais de administrador e fazer login.</li>
+</ul>
+</td><td><p>&nbsp;</p>
+
+<p><img src="https://cdn.discordapp.com/attachments/993600592050139176/1300619967091179621/image.png?ex=6721803c&amp;is=67202ebc&amp;hm=0cd30a2eb486fa04e9ef1dc9f175793269bf9a8610c463feabf179094a925e3a&amp;=" style="height:99px; width:200px" />&nbsp;</p>
+
+<p>Deve ser redirecionado para as p&aacute;ginas de acesso que o admin possui autoriza&ccedil;&atilde;o de visualizar.</p>
+
+<p>&nbsp;</p>
+</td></tr><tr><td width="5">2</td><td><p>Acessar a Se&ccedil;&atilde;o de Gerenciamento de Assentos:</p>
+
+<ul>
+	<li>Navegar at&eacute; a se&ccedil;&atilde;o de gerenciamento de assentos.</li>
+</ul>
+</td><td><p><img src="https://cdn.discordapp.com/attachments/993600592050139176/1300621594338787453/image.png?ex=672181c0&amp;is=67203040&amp;hm=41c64db05b1a5afab8633460bf2d2928d1135d7339d02c10e53d155abf6a818e&amp;" style="height:92px; width:200px" /></p>
+</td></tr><tr><td width="5">3</td><td><p>Criar ou Atualizar um Recurso de Assento:</p>
+
+<ul>
+	<li>Selecionar um tipo de assento (Primeira Classe, Neg&oacute;cios, Economia).</li>
+	<li>Alterar o pre&ccedil;o e/ou recursos do assento (ex: &quot;adicionar Wi-Fi&quot;).</li>
+	<li>Salvar as altera&ccedil;&otilde;es.</li>
+</ul>
+</td><td><p><img src="https://cdn.discordapp.com/attachments/993600592050139176/1300623298853474354/image.png?ex=67218356&amp;is=672031d6&amp;hm=08223327edbfadbb155cbf4ccdc41975515aecf67580f257a0c9eeb47ccf49c7&amp;" style="height:90px; width:200px" /></p>
+
+<p>Deve aparecer como verde sinalizado as mudan&ccedil;as que falta ser realizadas a aprova&ccedil;&atilde;o</p>
+</td></tr><tr><td width="5">4</td><td><p>Login como Gerente:</p>
+
+<ul>
+	<li>Fazer logout do administrador.</li>
+	<li>Acessar a p&aacute;gina de login e inserir credenciais do gerente.</li>
+</ul>
+</td><td><p><img src="https://cdn.discordapp.com/attachments/993600592050139176/1300623679037902960/image.png?ex=672183b1&amp;is=67203231&amp;hm=83662e405fe119ec587b5827ac6b5f0333f2e492784071f022a14cc4fd425021&amp;" style="height:92px; width:200px" /></p>
+
+<p>Deve voltar para a p&aacute;gina inicial, e pedir novamente as informa&ccedil;&otilde;es para realizar login.</p>
+</td></tr><tr><td width="5">5</td><td><p>Visualizar a Lista de Assentos:</p>
+
+<ul>
+	<li>Navegar at&eacute; a lista de assentos que o administrador editou.</li>
+</ul>
+</td><td><p><img src="https://cdn.discordapp.com/attachments/993600592050139176/1300624273265790976/image.png?ex=6721843f&amp;is=672032bf&amp;hm=0f8e4f6b1b862b21025faafd1ccdaa47f5aff5130066560268384a52cc2c7331&amp;" style="height:90px; width:200px" /></p>
+
+<p>Deve visualizar as informa&ccedil;&otilde;es modificadas de forma sinalizada e o pedido para aceita&ccedil;&atilde;o ou rejei&ccedil;&atilde;o da modifica&ccedil;&atilde;o.</p>
+</td></tr><tr><td width="5">6</td><td><p>Aprovar a Altera&ccedil;&atilde;o:</p>
+
+<ul>
+	<li>Revisar as altera&ccedil;&otilde;es feitas pelo administrador.</li>
+	<li>Aprovar as altera&ccedil;&otilde;es de pre&ccedil;o e recurso.</li>
+</ul>
+</td><td><p><img src="https://cdn.discordapp.com/attachments/993600592050139176/1300625926115299408/image.png?ex=672185c9&amp;is=67203449&amp;hm=314524a3a1680be62c180929b1b4b886b250380ee5a8c96ee95a1cc168910d69&amp;" style="height:91px; width:200px" /></p>
+
+<p>Deve salvar as modifica&ccedil;&otilde;es e ficar dispon&iacute;vel para que o admin e o customer possam ver.</p>
+</td></tr><tr><td width="5">7</td><td><p>Visualizar aprova&ccedil;&atilde;o realizada</p>
+</td><td><p><img src="https://cdn.discordapp.com/attachments/993600592050139176/1300625926115299408/image.png?ex=672185c9&amp;is=67203449&amp;hm=314524a3a1680be62c180929b1b4b886b250380ee5a8c96ee95a1cc168910d69&amp;" style="height:91px; width:200px" /></p>
+
+<p>Deve aparecer a mensagem de aprovado</p>
+</td></tr><tr><td width="5">8</td><td><p>Verificar Disponibilidade:</p>
+
+<ul>
+	<li>Fazer logout do gerente</li>
+	<li>Fazer login como cliente.</li>
+</ul>
+</td><td><p><img src="https://cdn.discordapp.com/attachments/993600592050139176/1300642290691473489/image.png?ex=67219506&amp;is=67204386&amp;hm=cefea9b728516112e41bd3dcf96ebe242f0f148aac944cadbc37d862dc9b919d&amp;" style="height:92px; width:200px" /></p>
+
+<p>Deve sair para p&aacute;gina inicial, e pedir novmaente as informa&ccedil;&otilde;es para realizar login.</p>
+</td></tr><tr><td width="5">9</td><td><p>Tentar comprar um assento do tipo alterado como cliente:</p>
+
+<ul>
+	<li>Clicar em &quot;Book Flight&quot;</li>
+</ul>
+</td><td><p><img src="https://cdn.discordapp.com/attachments/993600592050139176/1300642698499457136/image.png?ex=67219568&amp;is=672043e8&amp;hm=05bccff9f61c7afe631bd4034b78b8ec3cf6c279d2a12b03f35964ae160f6fca&amp;" style="height:92px; width:200px" /></p>
+
+<p>Deve redirecionado para outra p&aacute;gina.</p>
+</td></tr><tr><td width="5">10</td><td><p>Adicionar informa&ccedil;&otilde;es sobre o voo</p>
+</td><td><p><img src="https://cdn.discordapp.com/attachments/993600592050139176/1300643091220533290/image.png?ex=672195c5&amp;is=67204445&amp;hm=bab40dc3d4d3ca3ca612b899c092965e8380c3bf979dc45d274f860627ee7ef4&amp;" style="height:93px; width:200px" /></p>
+
+<p>Com as informa&ccedil;&otilde;es adicionadas &eacute; para que seja poss&iacute;vel visualizar os voos</p>
+</td></tr><tr><td width="5">11</td><td><p>Mostrar o voo e assento que foi modificado</p>
+</td><td><p><img src="https://cdn.discordapp.com/attachments/993600592050139176/1300643357365764159/image.png?ex=67219605&amp;is=67204485&amp;hm=eda31a11ee0a64bb5b5d3c8aee31d2ba1a073a6f15da3a46404c1e1215a28649&amp;" style="height:91px; width:200px" /></p>
+
+<p>Deve retorna o assento com as mudan&ccedil;as cadastradas.</p>
+</td></tr><tr><td width="20%" valign="top"><span class="label"><br />Tipo de Execução:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimativa da duração da Execução (min):</span></td><td colspan="3">5.00</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Prioridade:</span></td><td colspan="3">Média</td></tr>
+<tr><td colspan="4"></td></tr><tr><td width="20%" valign="top"><span class="label">Requisitos</span><td colspan="3">REQ006:  Manage Feature Flight Seats [Versão: 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Palavras Chave:</span></td><td colspan="3">&nbsp;Nenhum<br/></td></tr>
+</table>
+</div>
+<a name='toc_3'></a>
+<h1 class='doclevel'>3.Suite de Testes : Test Suite for Custummer</h1>
+<a name="toc_tc709"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Caso de Teste QT A1-15: Search Flights&nbsp;<span style="font-size: 80%;">[Versão : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Autor:</span></td><td colspan="3">diego_cruz</td></tr>
+<tr><td colspan="4"><span class="label">Objetivo do Teste::</span><br /><p>Garantir que a funcionalidade de busca de voos opere conforme esperado, permitindo que o usu&aacute;rio insira os filtros necess&aacute;rios e receba resultados precisos e relevantes.</p>
+
+<p>O teste busca validar a integridade dos dados inseridos, como cidades, datas e n&uacute;mero de passageiros, al&eacute;m de verificar a correta exibi&ccedil;&atilde;o dos voos dispon&iacute;veis ou mensagens informativas em caso de aus&ecirc;ncia de resultados</p>
+</td></tr><tr><td colspan="4"><span class="label">Pré-condições:</span><br /><ul>
+	<li>O sistema deve estar dispon&iacute;vel e acess&iacute;vel.</li>
+	<li>O usu&aacute;rio deve estar na p&aacute;gina de busca de voos.</li>
+	<li>Todos os campos obrigat&oacute;rios no formul&aacute;rio (como &ldquo;Departure City&rdquo;, &ldquo;Destination City&rdquo; e &ldquo;Departure Date&rdquo;) devem estar preenchidos.</li>
+</ul>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Ações do Passo:</span></td><td><span class="label">Resultados Esperados::</span></td></tr><tr><td width="5">1</td><td><p>Acesse a p&aacute;gina de busca de voos</p>
+</td><td><p><img alt="" src="https://github.com/repo-software-testing-courses/Flight-Booking-System-JavaServlets_App/blob/master/Images/book.png?raw=true" style="height:213px; width:400px" /></p>
+</td></tr><tr><td width="5">2</td><td><p>Preencha o campo <strong>From</strong> (Cidade de Origem) com uma cidade v&aacute;lida.</p>
+
+<p>Preencha o campo <strong>To</strong> (Cidade de Destino) com uma cidade v&aacute;lida.</p>
+
+<p>Insira uma <strong>Departure Date</strong> v&aacute;lida (data futura) no formato correto.</p>
+
+<p>Selecione uma <strong>Class</strong>.</p>
+
+<p>Insira o n&uacute;mero de passageiros em <strong>No. of People</strong>.</p>
+</td><td><p><img alt="" src="https://media.discordapp.net/attachments/995470286889697351/1300628335075790919/image.png?ex=67218807&amp;is=67203687&amp;hm=314d5ad3ae09903237536f7c9f624485450d3abec75b64522ade8b99c31d5c8c&amp;=&amp;format=webp&amp;quality=lossless&amp;width=1226&amp;height=567" style="height:185px; width:400px" /></p>
+</td></tr><tr><td width="5">3</td><td><p>Clique no bot&atilde;o <strong>Search Flights</strong>.</p>
+</td><td></td></tr><tr><td width="5">4</td><td><p>Verifique se os resultados correspondentes s&atilde;o exibidos corretamente em formato de <strong>cards</strong> com as informa&ccedil;&otilde;es de voo.</p>
+</td><td><p><img alt="" src="https://media.discordapp.net/attachments/995470286889697351/1300628377882857472/image.png?ex=67218811&amp;is=67203691&amp;hm=545e126a76bec2e723dd9a9cf696394530876d046db026f1a7b34ac67f45d2d2&amp;=&amp;format=webp&amp;quality=lossless&amp;width=1276&amp;height=567" style="height:178px; width:400px" /></p>
+</td></tr><tr><td width="5">5</td><td><p>Confirme se cada card exibe os dados esperados: flight (n&uacute;mero do voo), Departure Date (Data de Origem), Departure City (Cidade de Origem), Arrival Date(Data de Destino), Arrival City (Cidade&nbsp;de Destino),&nbsp;Class (Classe) e Price (Pre&ccedil;o)</p>
+</td><td></td></tr><tr><td width="20%" valign="top"><span class="label"><br />Tipo de Execução:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimativa da duração da Execução (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Prioridade:</span></td><td colspan="3">Média</td></tr>
+<tr><td colspan="4"></td></tr><tr><td width="20%" valign="top"><span class="label">Requisitos</span><td colspan="3">REQ008:  Search Flights [Versão: 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Palavras Chave:</span></td><td colspan="3">&nbsp;Nenhum<br/></td></tr>
+</table>
+</div>
+<a name="toc_tc727"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Caso de Teste QT A1-16: Select Itinerary&nbsp;<span style="font-size: 80%;">[Versão : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Autor:</span></td><td colspan="3">diego_cruz</td></tr>
+<tr><td colspan="4"><span class="label">Objetivo do Teste::</span><br /><p>Assegurar que as informa&ccedil;&otilde;es de itiner&aacute;rio sejam apresentadas de forma clara e correta ao usu&aacute;rio, com todos os campos devidamente preenchidos.</p>
+
+<p>Tamb&eacute;m busca validar que a funcionalidade de sele&ccedil;&atilde;o de voo funcione conforme o esperado, permitindo que o usu&aacute;rio selecione um voo espec&iacute;fico e prossiga para a etapa de reserva.</p>
+</td></tr><tr><td colspan="4"><span class="label">Pré-condições:</span><br /><ul>
+	<li>O sistema deve estar dispon&iacute;vel e acess&iacute;vel.</li>
+	<li>O usu&aacute;rio deve ter realizado uma busca valida&nbsp;na p&aacute;gina de &quot;busca de voos&quot;.</li>
+</ul>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Ações do Passo:</span></td><td><span class="label">Resultados Esperados::</span></td></tr><tr><td width="5">1</td><td><p>Acesse a p&aacute;gina de <strong>Pesquisa de Voos e</strong>&nbsp;realize uma busca v&aacute;lida</p>
+</td><td><p><img alt="" src="https://media.discordapp.net/attachments/995470286889697351/1300628335075790919/image.png?ex=67218807&amp;is=67203687&amp;hm=314d5ad3ae09903237536f7c9f624485450d3abec75b64522ade8b99c31d5c8c&amp;=&amp;format=webp&amp;quality=lossless&amp;width=550&amp;height=254" style="height:185px; width:400px" /></p>
+</td></tr><tr><td width="5">2</td><td><p>Verifique se a p&aacute;gina de <strong>Itiner&aacute;rio</strong> exibe uma tabela com os detalhes dos voos retornados e selecione um v&ocirc;o</p>
+</td><td><p><img alt="" src="https://media.discordapp.net/attachments/995470286889697351/1300628377882857472/image.png?ex=67218811&amp;is=67203691&amp;hm=545e126a76bec2e723dd9a9cf696394530876d046db026f1a7b34ac67f45d2d2&amp;=&amp;format=webp&amp;quality=lossless&amp;width=1276&amp;height=567" style="height:178px; width:400px" /></p>
+</td></tr><tr><td width="5">4</td><td><p>Confirme que as colunas exibem as seguintes informa&ccedil;&otilde;es corretamente:</p>
+
+<ul>
+	<li><strong>Flight</strong> (N&uacute;mero do Voo)</li>
+	<li><strong>Departure Date</strong> (Data de Partida)</li>
+	<li><strong>Departure City</strong> (Cidade de Partida)</li>
+	<li><strong>Arrival Date</strong> (Data de Chegada)</li>
+	<li><strong>Arrival City</strong> (Cidade de Chegada)</li>
+	<li><strong>Class</strong> (Classe do Voo)</li>
+	<li><strong>Total Price</strong> (Pre&ccedil;o Total)</li>
+</ul>
+</td><td><p><img alt="" src="https://media.discordapp.net/attachments/995470286889697351/1300628570095226900/image.png?ex=6721883f&amp;is=672036bf&amp;hm=128bb612a929430335864d548e7ade749498e1f1f7f08189ab3f8ad90b5abdd8&amp;=&amp;format=webp&amp;quality=lossless&amp;width=550&amp;height=256" style="height:186px; width:400px" /></p>
+</td></tr><tr><td width="5">5</td><td><p>Clique no bot&atilde;o <strong>Select</strong> ao lado de um voo</p>
+</td><td></td></tr><tr><td width="5">6</td><td><p>Verifique se o sistema redireciona para a pagina <strong>Current Bookings</strong></p>
+</td><td><p><img alt="" src="https://media.discordapp.net/attachments/995470286889697351/1300628712227602514/image.png?ex=67218861&amp;is=672036e1&amp;hm=4ce23d797b948065e3653ed71f8ee8cab212ffe21f84c55b8b59b7a0243dbbfb&amp;=&amp;format=webp&amp;quality=lossless&amp;width=1250&amp;height=567" style="height:181px; width:400px" /></p>
+</td></tr><tr><td width="20%" valign="top"><span class="label"><br />Tipo de Execução:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimativa da duração da Execução (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Prioridade:</span></td><td colspan="3">Média</td></tr>
+<tr><td colspan="4"></td></tr><tr><td width="20%" valign="top"><span class="label">Requisitos</span><td colspan="3">REQ009:  Select Itinerary [Versão: 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Palavras Chave:</span></td><td colspan="3">&nbsp;Nenhum<br/></td></tr>
+</table>
+</div>
+<a name="toc_tc748"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Caso de Teste QT A1-17: Current Bookings&nbsp;<span style="font-size: 80%;">[Versão : 1]</span></th></tr>
+<tr><td width="20%" valign="top"><span class="label">Autor:</span></td><td colspan="3">diego_cruz</td></tr>
+<tr><td colspan="4"><span class="label">Objetivo do Teste::</span><br /><p>Garantir que as informa&ccedil;&otilde;es das reservas ativas do usu&aacute;rio sejam exibidas corretamente validando&nbsp;a precis&atilde;o dos dados exibidos (n&uacute;mero do voo, cidades, datas e n&uacute;mero do assento)</p>
+</td></tr><tr><td colspan="4"><span class="label">Pré-condições:</span><br /><ul>
+	<li>O usu&aacute;rio deve estar autenticado no sistema.</li>
+	<li>O usu&aacute;rio deve ter, pelo menos, uma reserva ativa registrada no sistema.</li>
+</ul>
+</td></tr><tr><td><span class="label">#:</span></td><td><span class="label">Ações do Passo:</span></td><td><span class="label">Resultados Esperados::</span></td></tr><tr><td width="5">1</td><td><p>Navegue at&eacute; a se&ccedil;&atilde;o <strong>Current Bookings</strong></p>
+</td><td><p><img alt="" src="https://media.discordapp.net/attachments/995470286889697351/1300628712227602514/image.png?ex=67218861&amp;is=672036e1&amp;hm=4ce23d797b948065e3653ed71f8ee8cab212ffe21f84c55b8b59b7a0243dbbfb&amp;=&amp;format=webp&amp;quality=lossless&amp;width=1250&amp;height=567" style="height:181px; width:400px" /></p>
+</td></tr><tr><td width="5">2</td><td><p>Verifique se as reservas ativas s&atilde;o exibidas na tabela</p>
+</td><td></td></tr><tr><td width="5">3</td><td><p>Confirme se as colunas apresentam corretamente:</p>
+
+<ul>
+	<li>N&uacute;mero do voo (Flight)</li>
+	<li>Cidade de partida (Departure City)</li>
+	<li>Cidade de chegada (Arrival City)</li>
+	<li>Data de partida (Departure Date)</li>
+	<li>Data de chegada (Arrival Date)</li>
+	<li>N&uacute;mero do assento (Seat Number)</li>
+</ul>
+</td><td></td></tr><tr><td width="5">4</td><td><p>Verifique a consist&ecirc;ncia dos dados exibidos com a reserva feita anteriormente</p>
+</td><td></td></tr><tr><td width="20%" valign="top"><span class="label"><br />Tipo de Execução:</span></td><td colspan="3">Manual</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Estimativa da duração da Execução (min):</span></td><td colspan="3"></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Prioridade:</span></td><td colspan="3">Média</td></tr>
+<tr><td colspan="4"></td></tr><tr><td width="20%" valign="top"><span class="label">Requisitos</span><td colspan="3">REQ010:  Current Bookings [Versão: 1]<br /></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Palavras Chave:</span></td><td colspan="3">&nbsp;Nenhum<br/></td></tr>
+</table>
+</div>
+
+</body>
+</html>
