@@ -1,84 +1,86 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
- */
 package manager;
-import models.Flight;
 
+import models.Flight;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-import javax.servlet.ServletException;
 import java.io.IOException;
 import java.util.ArrayList;
-import javax.servlet.ServletContext;
+
 import static org.mockito.Mockito.*;
 
-
-/**
- *
- * @author Rafaela
- */
 public class ApproveSeatsTest {
-    
-    private ApproveSeats approveSeatsServlet;
+
+    @InjectMocks
+    private ApproveSeats approveSeats;
+
+    @Mock
+    private HttpServletRequest request;
+
+    @Mock
+    private HttpServletResponse response;
+
+    @Mock
+    private ServletContext context;
+
     private ArrayList<Flight> flights;
 
     @BeforeEach
-    public void setUp() {
-        approveSeatsServlet = new ApproveSeats();
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
 
-        // Criação de um contexto simulado para a servlet
         flights = new ArrayList<>();
-        Flight flight = new Flight(true, 5, 5, 5, 5, "Flight123", new ArrayList<>(), 100, 90, "CityA", "CityB", null, null, 50, 30, 20);
-        flights.add(flight);
-        
-        // Simulando o contexto da servlet
-        getServletContext().setAttribute("flights", flights);
+        flights.add(new Flight(true, 5, 3, 2, 10, "Flight101", new ArrayList<>(), 10, 10, "CityA", "CityB", new java.sql.Date(System.currentTimeMillis()), new java.sql.Date(System.currentTimeMillis()), 5, 3, 2));
+        flights.add(new Flight(true, 6, 4, 3, 13, "Flight102", new ArrayList<>(), 13, 13, "CityC", "CityD", new java.sql.Date(System.currentTimeMillis()), new java.sql.Date(System.currentTimeMillis()), 6, 4, 3));
+
+        when(context.getAttribute("flights")).thenReturn(flights);
+        when(request.getServletContext()).thenReturn(context);
     }
 
+    // Testa se os assentos antigos são resetados
     @Test
-    public void testDoPost_ApprovesSeats() throws ServletException, IOException {
-        // Simulação dos objetos request e response
-        HttpServletRequest request = mock(HttpServletRequest.class);
-        HttpServletResponse response = mock(HttpServletResponse.class);
-        
-        when(request.getParameter("flight_name")).thenReturn("Flight123");
+    void testOldSeatsAreReset() throws IOException {
+        when(request.getParameter("flight_name")).thenReturn("Flight101");
 
-        // Chamada do método doPost
-        approveSeatsServlet.doPost(request, response);
+        approveSeats.doPost(request, response);
 
-        // Verificações
-        Flight approvedFlight = flights.get(0);
-        assertEquals(0, approvedFlight.getOldESeats());
-        assertEquals(0, approvedFlight.getOldBSeats());
-        assertEquals(0, approvedFlight.getOldFSeats());
-        assertEquals(0, approvedFlight.getOldTSeats());
-        assertFalse(approvedFlight.isChanged);
+        assertEquals(0, flights.get(0).getOldESeats());
+        assertEquals(0, flights.get(0).getOldBSeats());
+        assertEquals(0, flights.get(0).getOldFSeats());
+        assertEquals(0, flights.get(0).getOldTSeats());
+    }
 
-        // Verifica se o redirecionamento foi chamado
+    // Testa se a flag isChanged é definida como falsa
+    @Test
+    void testIsChangedFlagIsReset() throws IOException {
+        when(request.getParameter("flight_name")).thenReturn("Flight101");
+
+        approveSeats.doPost(request, response);
+
+        assertFalse(flights.get(0).isChanged);
+    }
+
+    // Testa se o redirecionamento é feito corretamente
+    @Test
+    void testRedirectIsDone() throws IOException {
+        when(request.getParameter("flight_name")).thenReturn("Flight101");
+
+        approveSeats.doPost(request, response);
+
         verify(response).sendRedirect("ApproveSeats.jsp");
     }
 
-    // Método para simular o contexto da servlet
-    private ServletContext getServletContext() {
-        return mock(ServletContext.class);
-    }
+    // Testa se o método doPost não lança exceções
+    @Test
+    void testDoPostDoesNotThrowException() {
+        when(request.getParameter("flight_name")).thenReturn("Flight101");
 
-    private Object verify(HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    private void assertEquals(int i, int oldFSeats) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    private void assertFalse(boolean changed) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        assertDoesNotThrow(() -> approveSeats.doPost(request, response));
     }
 }
