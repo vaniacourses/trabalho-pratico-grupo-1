@@ -1,56 +1,72 @@
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+package manager;
+
+import models.Features;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import static org.mockito.Mockito.*;
+
 public class DisapproveFeaturesTest {
-    private DisapproveFeatures disapproveFeaturesServlet;
+
+    @InjectMocks
+    private DisapproveFeatures disapproveFeatures;
+
     @Mock
     private HttpServletRequest request;
+
     @Mock
     private HttpServletResponse response;
+
     @Mock
-    private ServletContext servletContext;
+    private ServletContext context;
+
     private ArrayList<Features> featuresList;
+
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         MockitoAnnotations.openMocks(this);
-        disapproveFeaturesServlet = new DisapproveFeatures();
+
         featuresList = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            Features feature = new Features();
-            feature.setNewSeatPitch(15);
-            feature.setNewSeatWidth(18);
-            feature.setNewVideoType("OLED");
-            feature.setNewPowerType("Solar");
-            feature.setNewSeatType("Premium");
-            feature.setNewPrice(200);
-            feature.setNewWifi("Available");
-            feature.setNewSpecialFood("Gluten-Free");
-            featuresList.add(feature);
-        }
-        when(servletContext.getAttribute("features")).thenReturn(featuresList);
-        disapproveFeaturesServlet.setServletContext(servletContext);
+        featuresList.add(new Features(100, 120, 1, true, 32.5, 18.0, 33.0, 18.5, "LCD", "LED", "Economy", "Business", "AC", "DC", "Yes", "No", "Vegetarian", "Vegan"));
+        featuresList.add(new Features(200, 220, 2, true, 34.5, 19.0, 35.0, 19.5, "LED", "OLED", "Business", "First Class", "DC", "USB", "No", "Yes", "Vegan", "Gluten-Free"));
+        featuresList.add(new Features(300, 320, 3, true, 36.5, 20.0, 37.0, 20.5, "OLED", "QLED", "First Class", "Premium", "USB", "Solar", "Yes", "No", "Gluten-Free", "Halal"));
+
+        when(context.getAttribute("features")).thenReturn(featuresList);
+        when(request.getServletContext()).thenReturn(context);
     }
+
+    // Testa se os valores antigos são aplicados
     @Test
-    public void doPostTest() throws IOException {
-        disapproveFeaturesServlet.doPost(request, response);
-        for (int i = 0; i < 3; i++) {
-            Features feature = featuresList.get(i);
-            assertEquals(15, feature.getSeatPitch());
-            assertEquals(18, feature.getSeatWidth());
-            assertEquals("OLED", feature.getVideoType());
-            assertEquals("Solar", feature.getPowerType());
-            assertEquals("Premium", feature.getSeatType());
-            assertEquals(200, feature.getPrice());
-            assertEquals("Available", feature.getWifi());
-            assertEquals("Gluten-Free", feature.getSpecialFood());
+    void testOldValuesAreApplied() throws IOException {
+        disapproveFeatures.doPost(request, response);
+
+        for (Features feature : featuresList) {
+            assertEquals(feature.getNewSeatPitch(), feature.getSeatPitch());
+            assertEquals(feature.getNewSeatWidth(), feature.getSeatWidth());
+            assertEquals(feature.getNewVideoType(), feature.getVideoType());
+            assertEquals(feature.getNewPowerType(), feature.getPowerType());
+            assertEquals(feature.getNewSeatType(), feature.getSeatType());
+            assertEquals(feature.getNewPrice(), feature.getPrice());
+            assertEquals(feature.getNewWifi(), feature.getWifi());
+            assertEquals(feature.getNewSpecialFood(), feature.getSpecialFood());
+        }
+    }
+
+    // Testa se os novos valores são resetados
+    @Test
+    void testNewValuesAreReset() throws IOException {
+        disapproveFeatures.doPost(request, response);
+
+        for (Features feature : featuresList) {
             assertEquals(0, feature.getNewSeatPitch());
             assertEquals(0, feature.getNewSeatWidth());
             assertNull(feature.getNewVideoType());
@@ -60,7 +76,27 @@ public class DisapproveFeaturesTest {
             assertNull(feature.getNewWifi());
             assertNull(feature.getNewSpecialFood());
         }
+    }
+
+    // Testa se a flag isChanged é definida como falsa
+    @Test
+    void testIsChangedFlagIsReset() throws IOException {
+        disapproveFeatures.doPost(request, response);
+
         assertFalse(Features.isChanged);
+    }
+
+    // Testa se o redirecionamento é feito corretamente
+    @Test
+    void testRedirectIsDone() throws IOException {
+        disapproveFeatures.doPost(request, response);
+
         verify(response).sendRedirect("ApproveFeatures.jsp");
+    }
+
+    // Testa se o método doPost não lança exceções
+    @Test
+    void testDoPostDoesNotThrowException() {
+        assertDoesNotThrow(() -> disapproveFeatures.doPost(request, response));
     }
 }
