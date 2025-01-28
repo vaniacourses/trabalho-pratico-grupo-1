@@ -90,6 +90,10 @@
             <arg value="customer.BookFlightTest"/>
             <arg value="customer.ChooseFlightTest"/>
             <arg value="webservices.OriginCompleterTest"/>
+            <arg value="webservices.SContextListenerTest"/>
+            <arg value="models.FBSTest"/>
+
+
 
         </java>
     </target>

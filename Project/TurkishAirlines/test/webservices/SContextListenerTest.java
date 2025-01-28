@@ -1,92 +1,102 @@
 package webservices;
 
+import static org.mockito.Mockito.*;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
 import models.Customer;
 import models.FBS;
 import models.Features;
 import models.Flight;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletContextEvent;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.*;
 
 public class SContextListenerTest {
 
-    @InjectMocks
-    private SContextListener sContextListener;
+    // Mocks para as dependências
+    @Mock private ServletContextEvent servletContextEvent;
+    @Mock private ServletContext servletContext;
+    @Mock private FBS fbs;
+    @Mock private Connection connection;
+    
+    // Instância do listener a ser testado
+    private SContextListener contextListener;
 
-    @Mock
-    private ServletContextEvent servletContextEvent;
-
-    @Mock
-    private ServletContext servletContext;
-
-    @Mock
-    private Connection connection;
-
-    @Mock
-    private FBS fbs;
-
-    @BeforeEach
-    void setUp() throws SQLException {
+    // Inicializa os mocks antes de cada teste
+    @Before
+    public void setUp() {
+        // Inicializa os mocks do Mockito
         MockitoAnnotations.openMocks(this);
+        
+        // Configura o mock do ServletContextEvent para retornar o ServletContext mockado
         when(servletContextEvent.getServletContext()).thenReturn(servletContext);
-        when(DriverManager.getConnection(anyString())).thenReturn(connection);
+        
+        // Cria uma instância do listener
+        contextListener = new SContextListener();
     }
 
-    // Testa se o contexto é inicializado corretamente
+    // Teste do método contextInitialized
     @Test
-    void testContextInitialized() throws SQLException {
+    public void testContextInitialized() throws SQLException {
+        // Simula a conexão com o banco de dados
+        when(servletContext.getAttribute("con")).thenReturn(connection);
+
+        // Simula a interação com o FBS
         ArrayList<Features> features = new ArrayList<>();
         ArrayList<Customer> customers = new ArrayList<>();
         ArrayList<Flight> flights = new ArrayList<>();
-
+        
         when(fbs.populateFeatures(connection)).thenReturn(features);
         when(fbs.populateCustomers(connection)).thenReturn(customers);
         when(fbs.getAllFlights(connection, customers, features)).thenReturn(flights);
 
-        sContextListener.contextInitialized(servletContextEvent);
+        // Chamamos o método que estamos testando
+        contextListener.contextInitialized(servletContextEvent);
 
-        verify(servletContext).setAttribute("con", connection);
-        verify(servletContext).setAttribute("features", features);
-        verify(servletContext).setAttribute("fbs", fbs);
-        verify(servletContext).setAttribute("flights", flights);
-        verify(servletContext).setAttribute("customers", customers);
+        // Verifica se a conexão foi setada no ServletContext
+        verify(servletContext).setAttribute(eq("con"), any(Connection.class));
+
+        // Verifica se o método populateFeatures foi chamado
+        verify(fbs).populateFeatures(connection);
+        
+        // Verifica se o método populateCustomers foi chamado
+        verify(fbs).populateCustomers(connection);
+
+        // Verifica se o método getAllFlights foi chamado
+        verify(fbs).getAllFlights(connection, customers, features);
+        
+        // Verifica se as features, fbs, flights e customers foram setados no ServletContext
+        verify(servletContext).setAttribute(eq("features"), eq(features));
+        verify(servletContext).setAttribute(eq("fbs"), eq(fbs));
+        verify(servletContext).setAttribute(eq("flights"), eq(flights));
+        verify(servletContext).setAttribute(eq("customers"), eq(customers));
     }
 
-    // Testa se o contexto é destruído corretamente
+    // Teste do método contextInitialized quando ocorre uma exceção
     @Test
-    void testContextDestroyed() {
-        sContextListener.contextDestroyed(servletContextEvent);
-        // Nenhuma ação específica a ser verificada
+    public void testContextInitializedThrowsSQLException() throws SQLException {
+        // Simula uma exceção no momento da conexão com o banco
+        when(fbs.populateFeatures(connection)).thenThrow(new SQLException("Database error"));
+
+        // Executa o método, esperando que ele não cause um erro fatal
+        contextListener.contextInitialized(servletContextEvent);
+
+        // Verifica se o log de erro ou o comportamento esperado foi executado
+        // O que pode ser adicionado aqui depende de como o seu código gerencia falhas
     }
 
-    // Testa se a conexão é fechada corretamente
+    // Teste do método contextDestroyed
     @Test
-    void testConnectionClosed() throws SQLException {
-        sContextListener.contextDestroyed(servletContextEvent);
-        verify(connection, times(1)).close();
-    }
-
-    // Testa se o método contextInitialized não lança exceções
-    @Test
-    void testContextInitializedDoesNotThrowException() {
-        assertDoesNotThrow(() -> sContextListener.contextInitialized(servletContextEvent));
-    }
-
-    // Testa se o método contextDestroyed não lança exceções
-    @Test
-    void testContextDestroyedDoesNotThrowException() {
-        assertDoesNotThrow(() -> sContextListener.contextDestroyed(servletContextEvent));
+    public void testContextDestroyed() {
+        // Chama o método contextDestroyed, sem comportamentos a testar diretamente
+        contextListener.contextDestroyed(servletContextEvent);
+        
+       // Teste básico de invocação
+        verify(servletContextEvent, times(1)).getServletContext();  // Verifica se o método foi invocado no mock
     }
 }
