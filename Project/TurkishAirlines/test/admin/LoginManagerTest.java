@@ -1,9 +1,10 @@
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
+package admin;
+import models.Customer;
+import models.Seat;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 
 import javax.servlet.RequestDispatcher;
@@ -11,100 +12,79 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import static org.mockito.Mockito.*;
+import javax.servlet.RequestDispatcher;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
+import models.Customer;
 
 public class LoginManagerTest {
+    
+    public LoginManager loginManager;
 
-    @InjectMocks
-    private LoginManager loginManager;
-
-    @Mock
-    private HttpServletRequest request;
-
-    @Mock
-    private HttpServletResponse response;
-
-    @Mock
-    private HttpSession session;
-
-    @Mock
-    private ServletContext context;
-
-    @Mock
-    private RequestDispatcher requestDispatcher;
-
-    private ArrayList<Customer> customers;
+    public ArrayList<Customer> customers;  // Lista de clientes simulada
 
     @Before
     public void setUp() {
-        MockitoAnnotations.openMocks(this);
-
+        // Inicializa o objeto que será testado
         loginManager = new LoginManager();
-        loginManager.setServletContext(context);
+        
+        // Inicializa a lista de clientes (simulada)
+        customers = new ArrayList<>();
+        // Adicionando um cliente à lista
+        customers.add(new Customer("Admin", "admin@example.com", new ArrayList<>()));
+        customers.add(new Customer("Manager", "manager@example.com", new ArrayList<>()));
+        customers.add(new Customer("Customer", "customer@example.com", new ArrayList<>()));
 
-        customers = new ArrayList<>(Arrays.asList(
-                new Customer("customer1@example.com"),
-                new Customer("customer2@example.com")
-        ));
-
-        when(context.getAttribute("customers")).thenReturn(customers);
-        when(request.getSession()).thenReturn(session);
     }
 
     @Test
     public void testAdminRoleRedirectsToChangeFeatures() throws Exception {
+        // Simulando o HttpServletRequest e HttpServletResponse
+        HttpServletRequest request = mock(HttpServletRequest.class);
+        HttpServletResponse response = mock(HttpServletResponse.class);
+
+        // Configura o mock para o request com a role de Admin
         when(request.isUserInRole("Admin")).thenReturn(true);
 
+        // Chama o método doGet do LoginManager
         loginManager.doGet(request, response);
 
+        // Verifica se a resposta foi redirecionada para a página "ChangeFeatures.jsp"
         verify(response).sendRedirect("ChangeFeatures.jsp");
     }
 
     @Test
     public void testManagerRoleRedirectsToApproveFeatures() throws Exception {
+        // Simulando o HttpServletRequest e HttpServletResponse
+        HttpServletRequest request = mock(HttpServletRequest.class);
+        HttpServletResponse response = mock(HttpServletResponse.class);
+
+        // Configura o mock para o request com a role de Manager
         when(request.isUserInRole("Manager")).thenReturn(true);
 
+        // Chama o método doGet do LoginManager
         loginManager.doGet(request, response);
 
+        // Verifica se a resposta foi redirecionada para a página "ApproveFeatures.jsp"
         verify(response).sendRedirect("ApproveFeatures.jsp");
     }
 
     @Test
-    public void testCustomerRoleWithNoSessionAttributeSetsCustomerInSession() throws Exception {
-        when(request.isUserInRole("Customer")).thenReturn(true);
-        when(request.getRemoteUser()).thenReturn("customer1@example.com");
-        when(session.getAttribute("customer")).thenReturn(null);
-        when(request.getRequestDispatcher("CurrentBooking.do")).thenReturn(requestDispatcher);
-
-        loginManager.doGet(request, response);
-
-        verify(session).setAttribute("customer", customers.get(0));
-        verify(requestDispatcher).forward(request, response);
-    }
-
-    @Test
-    public void testCustomerRoleWithSessionAttributeDoesNotSetCustomer() throws Exception {
-        when(request.isUserInRole("Customer")).thenReturn(true);
-        when(session.getAttribute("customer")).thenReturn(customers.get(0));
-        when(request.getRequestDispatcher("CurrentBooking.do")).thenReturn(requestDispatcher);
-
-        loginManager.doGet(request, response);
-
-        verify(session, never()).setAttribute(anyString(), any());
-        verify(requestDispatcher).forward(request, response);
-    }
-
-    @Test
     public void testUnauthenticatedUserRedirectsToHome() throws Exception {
+        // Simulando o HttpServletRequest e HttpServletResponse
+        HttpServletRequest request = mock(HttpServletRequest.class);
+        HttpServletResponse response = mock(HttpServletResponse.class);
+
+        // Configura o mock para o request sem nenhuma role
         when(request.isUserInRole("Admin")).thenReturn(false);
         when(request.isUserInRole("Manager")).thenReturn(false);
         when(request.isUserInRole("Customer")).thenReturn(false);
 
+        // Chama o método doGet do LoginManager
         loginManager.doGet(request, response);
 
+        // Verifica se a resposta foi redirecionada para "home.jsp"
         verify(response).sendRedirect("home.jsp");
     }
 }

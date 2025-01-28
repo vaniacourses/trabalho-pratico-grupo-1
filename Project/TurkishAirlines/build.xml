@@ -68,19 +68,23 @@
     nbproject/build-impl.xml file. 
 
     -->
-    <property name="lib.dir" value="lib"/>
+    <property name="lib.dir" value="Libs"/>
+    <property name="test.dir" value="test"/>
+
 
     <path id="project.classpath">
         <fileset dir="${lib.dir}">
             <include name="*.jar"/>
         </fileset>
+        <!-- Adicionando a pasta build/test para os testes compilados -->
+        <pathelement path="build/test"/> 
     </path>
 
     <target name="test">
         <mkdir dir="build/test"/>
-        <javac srcdir="src" destdir="build/test" classpathref="project.classpath"/>
+        <javac srcdir="${test.dir}" destdir="build/test" classpathref="project.classpath"/>
         <java classname="org.junit.runner.JUnitCore" fork="true" classpathref="project.classpath">
-            <arg value="YourTestClass"/>
+            <arg value="admin.LoginManagerTest"/>
         </java>
     </target>
 </project>

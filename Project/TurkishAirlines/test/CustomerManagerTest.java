@@ -1,6 +1,8 @@
+package models;
+
 import models.Customer;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -14,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class CustomerManagerTest {
@@ -39,7 +41,7 @@ public class CustomerManagerTest {
 
     private ArrayList<Customer> customers;
 
-    @BeforeEach
+    @Before
     void setUp() {
         MockitoAnnotations.openMocks(this);
 

@@ -53,7 +53,7 @@
     </servlet>
     <servlet>
         <servlet-name>LoginManager</servlet-name>
-        <servlet-class>LoginManager</servlet-class>
+        <servlet-class>admin.LoginManager</servlet-class>
         <security-role-ref>
             <description/>
             <role-name>Admin</role-name>
