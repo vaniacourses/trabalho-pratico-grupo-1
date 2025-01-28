@@ -20,9 +20,21 @@ import models.Customer;
 
 public class LoginManagerTest {
     
-    public LoginManager loginManager;
+    private LoginManager loginManager;
 
-    public ArrayList<Customer> customers;  // Lista de clientes simulada
+    private ArrayList<Customer> customers;  // Lista de clientes simulada
+    
+    @Mock
+    private ServletContext servletContext;
+    
+    @Mock
+    private HttpServletRequest request;
+    
+    @Mock
+    private HttpServletResponse response;
+
+    @Mock
+    private HttpSession session;
 
     @Before
     public void setUp() {
@@ -33,18 +45,42 @@ public class LoginManagerTest {
         // Inicializa a lista de clientes (simulada)
         customers = new ArrayList<>();
         // Adicionando um cliente à lista
-        customers.add(new Customer("Admin", "admin@example.com", new ArrayList<>()));
-        customers.add(new Customer("Manager", "manager@example.com", new ArrayList<>()));
-        customers.add(new Customer("Customer", "customer@example.com", new ArrayList<>()));
+        customers.add(new Customer("Admin", "haris@admin.com", new ArrayList<>()));
+        customers.add(new Customer("Manager", "haris@manager.com", new ArrayList<>()));
+        customers.add(new Customer("Customer", "shariq@customer.com", new ArrayList<>()));
+        
+        // Mockando o comportamento do getServletContext() para retornar a lista de clientes
+        when(request.getServletContext()).thenReturn(servletContext);
+        when(servletContext.getAttribute("customers")).thenReturn(customers);
+
+        // Mockando o comportamento do request.getSession()
+        when(request.getSession()).thenReturn(session);
+        when(request.isUserInRole("Customer")).thenReturn(true);
+        when(request.getRemoteUser()).thenReturn("shariq@customer.com");
 
     }
+    
+    @Test
+    public void testCustomerRoleRedirectsToCurrentBooking() throws Exception {
 
+        // Simulando que o cliente ainda não foi definido na sessão
+        when(session.getAttribute("customer")).thenReturn(null);
+
+        // Executando o método doGet
+        loginManager.doGet(request, response);
+
+        // Verificando se a requisição foi encaminhada para "CurrentBooking.do"
+        verify(request).getRequestDispatcher("CurrentBooking.do");
+
+        // Verificando se o cliente foi adicionado à sessão corretamente
+        Customer customer = customers.get(2); // O cliente "customer@example.com"
+        verify(session).setAttribute("customer", customer);  // Verifica se o cliente foi adicionado à sessão
+    }
+
+    
+    
     @Test
     public void testAdminRoleRedirectsToChangeFeatures() throws Exception {
-        // Simulando o HttpServletRequest e HttpServletResponse
-        HttpServletRequest request = mock(HttpServletRequest.class);
-        HttpServletResponse response = mock(HttpServletResponse.class);
-
         // Configura o mock para o request com a role de Admin
         when(request.isUserInRole("Admin")).thenReturn(true);
 
@@ -57,10 +93,6 @@ public class LoginManagerTest {
 
     @Test
     public void testManagerRoleRedirectsToApproveFeatures() throws Exception {
-        // Simulando o HttpServletRequest e HttpServletResponse
-        HttpServletRequest request = mock(HttpServletRequest.class);
-        HttpServletResponse response = mock(HttpServletResponse.class);
-
         // Configura o mock para o request com a role de Manager
         when(request.isUserInRole("Manager")).thenReturn(true);
 
@@ -73,10 +105,6 @@ public class LoginManagerTest {
 
     @Test
     public void testUnauthenticatedUserRedirectsToHome() throws Exception {
-        // Simulando o HttpServletRequest e HttpServletResponse
-        HttpServletRequest request = mock(HttpServletRequest.class);
-        HttpServletResponse response = mock(HttpServletResponse.class);
-
         // Configura o mock para o request sem nenhuma role
         when(request.isUserInRole("Admin")).thenReturn(false);
         when(request.isUserInRole("Manager")).thenReturn(false);

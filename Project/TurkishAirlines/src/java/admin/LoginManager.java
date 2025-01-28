@@ -38,7 +38,7 @@ public class LoginManager extends HttpServlet {
         else if(request.isUserInRole("Customer"))
         {
                 if (request.getSession().getAttribute("customer") == null){
-                 HttpSession s = request.getSession();
+                HttpSession s = request.getSession();
                 String customerEmail = request.getRemoteUser();
 
                 ArrayList<Customer> c = (ArrayList<Customer>)(getServletContext().getAttribute("customers"));
