@@ -28,7 +28,8 @@ public class LoginManagerTest {
     public void setUp() {
         // Inicializa o objeto que será testado
         loginManager = new LoginManager();
-        
+        MockitoAnnotations.openMocks(this);
+
         // Inicializa a lista de clientes (simulada)
         customers = new ArrayList<>();
         // Adicionando um cliente à lista

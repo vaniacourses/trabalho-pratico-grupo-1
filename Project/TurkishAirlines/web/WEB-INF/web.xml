@@ -72,7 +72,7 @@
     </servlet>
     <servlet>
         <servlet-name>LogoutManager</servlet-name>
-        <servlet-class>LogoutManager</servlet-class>
+        <servlet-class>.LogoutManager</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CustomerManager</servlet-name>

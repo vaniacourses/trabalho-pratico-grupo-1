@@ -85,6 +85,7 @@
         <javac srcdir="${test.dir}" destdir="build/test" classpathref="project.classpath"/>
         <java classname="org.junit.runner.JUnitCore" fork="true" classpathref="project.classpath">
             <arg value="admin.LoginManagerTest"/>
+            <arg value="admin.LogoutManagerTest"/>
         </java>
     </target>
 </project>

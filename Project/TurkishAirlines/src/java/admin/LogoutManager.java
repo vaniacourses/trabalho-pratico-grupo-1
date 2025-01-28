@@ -1,3 +1,5 @@
+package admin;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -17,10 +19,13 @@ import javax.servlet.http.HttpServletResponse;
 public class LogoutManager extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        request.getSession().invalidate();
+        
+        // Verificar se a sessão existe antes de invalidá-la
+        if (request.getSession(false) != null) {
+            request.getSession().invalidate();
+        }
         
         response.sendRedirect("home.jsp");
     }
