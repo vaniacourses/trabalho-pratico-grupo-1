@@ -1,27 +1,27 @@
 package models;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class PersonTest {
 
     private Person person;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         person = new Person("John Doe", "john.doe@example.com") {};
     }
 
     // Testa se o nome é inicializado corretamente
     @Test
-    void testNameInitialization() {
+    public void testNameInitialization() {
         assertEquals("John Doe", person.name);
     }
 
     // Testa se o email é inicializado corretamente
     @Test
-    void testEmailInitialization() {
+    public void testEmailInitialization() {
         assertEquals("john.doe@example.com", person.email);
     }
 }
