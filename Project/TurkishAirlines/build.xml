@@ -87,6 +87,7 @@
             <arg value="admin.LoginManagerTest"/>
             <arg value="admin.LogoutManagerTest"/>
             <arg value="admin.ChangeFeaturesTest"/>
+            <arg value="customer.BookFlightTest"/>
         </java>
     </target>
 </project>

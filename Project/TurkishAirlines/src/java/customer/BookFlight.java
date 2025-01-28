@@ -20,7 +20,7 @@ public class BookFlight extends HttpServlet {
 
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
             request.getRequestDispatcher("BookFlight.jsp").forward(request, response);
