@@ -22,6 +22,7 @@ public class Flight {
     int totalSeats;
     int currentSeats;
     
+    
     String departureCity;
     String arrivalCity;
     
@@ -118,7 +119,10 @@ public class Flight {
     }
     
     
-    
+    public ArrayList<Seat> getSeats() {
+    return seats;
+}
+
     
     public void setOldESeats(int s)
     {

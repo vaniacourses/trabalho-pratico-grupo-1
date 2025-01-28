@@ -19,7 +19,7 @@ public class Seat {
     int seatNumber;
     Flight flight;
     Features features;
-    Customer c;
+    public Customer c;
     
     public Seat(int sNumber, Flight flight, Features features, Customer c)
     {
