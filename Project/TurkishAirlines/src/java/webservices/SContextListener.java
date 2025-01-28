@@ -1,3 +1,5 @@
+package webservices;
+
 import java.io.File;
 import java.net.URISyntaxException;
 import models.Customer;

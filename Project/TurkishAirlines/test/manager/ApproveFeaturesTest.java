@@ -4,15 +4,19 @@ import models.Features;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
-
+import org.mockito.MockitoAnnotations;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.ServletException;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
+
 
 public class ApproveFeaturesTest {
 
@@ -27,48 +31,85 @@ public class ApproveFeaturesTest {
     @Mock
     private ServletContext servletContext;
 
-    private ArrayList<Features> featuresList;
+    
+    private List<Features> featuresList;
+
 
     @Before
     public void setUp() {
         MockitoAnnotations.openMocks(this);
 
-        // Inicializando o servlet
-        approveFeatures = new ApproveFeatures();
-
+        // Criando uma lista de Features
         featuresList = new ArrayList<>();
-        featuresList.add(new Features(100, 150, 1, true, 32.0, 18.0, 34.0, 19.0, "HD", "4K", "Leather", "Premium",
-                "USB", "USB-C", "Available", "Unavailable", "Vegetarian", "Vegan"));
-        featuresList.add(new Features(120, 160, 2, true, 31.0, 17.0, 33.0, 18.0, "SD", "HD", "Cloth", "Standard",
-                "None", "USB", "Available", "Available", "None", "Vegetarian"));
-        featuresList.add(new Features(130, 170, 3, true, 30.0, 16.0, 32.0, 17.0, "HD", "4K", "Economy", "Business",
-                "USB", "USB-C", "Yes", "No", "None", "None"));
 
+        // Adicionando alguns objetos Features à lista
+        featuresList.add(new Features(
+            100, 120, 1, true,
+            30.0, 18.0, 32.0, 19.0,
+            "HD", "4K", "Economy", "Business",
+            "USB", "USB-C", "Available", "Unavailable",
+            "Vegetarian", "Vegan"
+        ));
+
+        featuresList.add(new Features(
+            200, 150, 2, false,
+            28.0, 16.0, 35.0, 20.0,
+            "SD", "1080p", "First", "Economy",
+            "HDMI", "USB-C", "Available", "Unavailable",
+            "Non-Vegetarian", "Vegan"
+        ));
+
+        featuresList.add(new Features(
+            150, 100, 3, true,
+            25.0, 20.0, 30.0, 22.0,
+            "4K", "HD", "Business", "Economy",
+            "USB", "USB-A", "Available", "Unavailable",
+            "Vegetarian", "Non-Vegetarian"
+        ));
         // Configurando o ServletContext para retornar a lista de Features
         when(servletContext.getAttribute("features")).thenReturn(featuresList);
 
         // Configurando o servlet para usar o contexto simulado
         when(request.getServletContext()).thenReturn(servletContext);
     }
+    
+    @Test
+    public void testFirstFeature() {
+        // Verifique as propriedades do primeiro Feature na lista
+        Features firstFeature = (Features) featuresList.get(0);
+        assertEquals(18, firstFeature.getSeatWidth(), 0.01);
+        assertEquals("HD", firstFeature.getVideoType());
+    }
+
+    @Test
+    public void testAllFeatures() {
+        // Iterando pela lista de Features e verificando uma propriedade de cada
+        for (Features feature : featuresList) {
+            assertNotNull(feature.getVideoType());  // Apenas um exemplo de verificação
+        }
+    }
 
     @Test
     public void testDoPost() throws IOException {
-        // Invocando o método doPost
-        approveFeatures.doPost(request, response);
-
-        // Verificando alterações nos objetos Features
-        for (int i = 0; i < 3; i++) {
-            Features feature = featuresList.get(i);
-            assertEquals(0, feature.getNewSeatPitch(), 0.0);
-            assertEquals(0, feature.getNewSeatWidth(), 0.0);
-            assertNull(feature.getNewVideoType());
-            assertNull(feature.getNewPowerType());
-            assertNull(feature.getNewSeatType());
-            assertEquals(0, feature.getNewPrice());
-            assertNull(feature.getNewWifi());
-            assertNull(feature.getNewSpecialFood());
+        try {
+            approveFeatures.doPost(request, response);
+            // Verifique as interações aqui, caso existam
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+            fail("O método doPost deve ser executado sem lançar exceções");
         }
 
+        // Verifica se os métodos de modificação foram chamados
+        for (Features feature : featuresList) {
+            verify(feature).setNewSeatPitch(0);
+            verify(feature).setNewSeatWidth(0);
+            verify(feature).setNewVideoType(null);
+            verify(feature).setNewPowerType(null);
+            verify(feature).setNewSeatType(null);
+            verify(feature).setNewPrice(0);
+            verify(feature).setNewWifi(null);
+            verify(feature).setNewSpecialFood(null);
+        }
         // Verificando que Features.isChanged foi atualizado
         assertFalse(Features.isChanged);
 

@@ -22,11 +22,14 @@ public class ApproveFeatures extends HttpServlet {
 
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        System.out.println("Método doPost invocado!");
 
         ArrayList<Features> f = (ArrayList<Features>) (getServletContext().getAttribute("features"));
         
+
         
         for (int i = 0; i < 3; i++)
         {

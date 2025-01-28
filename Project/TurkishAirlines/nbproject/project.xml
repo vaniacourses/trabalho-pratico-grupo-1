@@ -48,6 +48,7 @@
                 </library>
                 <library dirs="200">
                     <file>${file.reference.mockito-core-3.4.0_-_Copia.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
                     <file>${file.reference.byte-buddy-1.9.10.jar}</file>

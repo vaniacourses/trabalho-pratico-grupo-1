@@ -22,7 +22,7 @@
     </filter-mapping>
     <listener>
         <description>ServletContextListener</description>
-        <listener-class>SContextListener</listener-class>
+        <listener-class>webservices.SContextListener</listener-class>
     </listener>
     <listener>
         <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
@@ -76,7 +76,7 @@
     </servlet>
     <servlet>
         <servlet-name>CustomerManager</servlet-name>
-        <servlet-class>CustomerManager</servlet-class>
+        <servlet-class>customer.CustomerManager</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CurrentBooking</servlet-name>
@@ -96,7 +96,7 @@
     </servlet>
     <servlet>
         <servlet-name>OriginCompleter</servlet-name>
-        <servlet-class>OriginCompleter</servlet-class>
+        <servlet-class>webservices.OriginCompleter</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PriceAndSeats</servlet-name>

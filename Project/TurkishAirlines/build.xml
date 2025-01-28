@@ -89,6 +89,8 @@
             <arg value="admin.ChangeFeaturesTest"/>
             <arg value="customer.BookFlightTest"/>
             <arg value="customer.ChooseFlightTest"/>
+            <arg value="webservices.OriginCompleterTest"/>
+
         </java>
     </target>
 </project>

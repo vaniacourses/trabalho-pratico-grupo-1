@@ -1,4 +1,7 @@
+package webservices;
+
 import com.google.gson.Gson;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +15,7 @@ public class OriginCompleter extends HttpServlet
 {
     
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+    public void doGet(HttpServletRequest request, HttpServletResponse response) 
     {
         response.setContentType("application/json");
 
@@ -27,11 +30,15 @@ public class OriginCompleter extends HttpServlet
             String searchList = new Gson().toJson(list);
 
             response.getWriter().write(searchList);
-        } 
-        catch (Exception e) 
-        {
-            System.err.println(e.getMessage());
+            
+        } catch (Exception e) {
+        e.printStackTrace();  // Isso ajuda a entender o que deu errado no log
+        try {
+            response.getWriter().write("{\"error\": \"An error occurred while processing the request.\"}");
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
         }
+    }
     }
     
     
