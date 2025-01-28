@@ -20,11 +20,15 @@ public class XSSRequestWrapper extends HttpServletRequestWrapper {
         // expression(...)
         Pattern.compile("expression\\((.*?)\\)", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL),
         // javascript:...
-        Pattern.compile("javascript:", Pattern.CASE_INSENSITIVE),
+        Pattern.compile("javascript:[^\\s]*", Pattern.CASE_INSENSITIVE),
         // vbscript:...
-        Pattern.compile("vbscript:", Pattern.CASE_INSENSITIVE),
+        Pattern.compile("vbscript:[^\\s]*", Pattern.CASE_INSENSITIVE),
         // onload(...)=...
-        Pattern.compile("onload(.*?)=", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL)
+        Pattern.compile("onload=\\((.*?)\\)", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL),
+   
+        // Outros eventos (onclick, onmouseover, etc)
+        Pattern.compile("onload\\s*=\\s*[^\\s]*", Pattern.CASE_INSENSITIVE | Pattern.DOTALL)
+
     };
 
     public XSSRequestWrapper(HttpServletRequest servletRequest) {
@@ -61,12 +65,14 @@ public class XSSRequestWrapper extends HttpServletRequestWrapper {
         return stripXSS(value);
     }
 
-    private String stripXSS(String value) {
+    String stripXSS(String value) {
         if (value != null) {
             // NOTE: It's highly recommended to use the ESAPI library and uncomment the following line to
             // avoid encoded attacks.
             // value = ESAPI.encoder().canonicalize(value);
-
+            // Debug: Imprimir valor original
+            System.out.println("Original value: " + value);
+            
             // Avoid null characters
             value = value.replaceAll("\0", "");
 
@@ -74,6 +80,8 @@ public class XSSRequestWrapper extends HttpServletRequestWrapper {
             for (Pattern scriptPattern : patterns){
                 value = scriptPattern.matcher(value).replaceAll("");
             }
+            // Debug: Imprimir valor filtrado
+            System.out.println("Filtered value: " + value);
         }
         return value;
     }
