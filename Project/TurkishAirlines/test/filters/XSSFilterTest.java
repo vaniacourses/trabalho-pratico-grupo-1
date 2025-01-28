@@ -1,7 +1,7 @@
 package filters;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import static org.junit.Assert.fail;
 
 import static org.mockito.Mockito.*;
 
@@ -32,35 +33,40 @@ public class XSSFilterTest {
     @Mock
     private FilterConfig filterConfig;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         MockitoAnnotations.openMocks(this);
     }
 
     // Testa se o filtro é inicializado corretamente
     @Test
-    void testInit() throws ServletException {
+    public void testInit() throws ServletException {
         xssFilter.init(filterConfig);
         // Nenhuma ação específica a ser verificada
     }
 
     // Testa se o filtro é destruído corretamente
     @Test
-    void testDestroy() {
+    public void testDestroy() {
         xssFilter.destroy();
         // Nenhuma ação específica a ser verificada
     }
 
     // Testa se o filtro envolve a requisição com XSSRequestWrapper
     @Test
-    void testRequestIsWrapped() throws IOException, ServletException {
+    public void testRequestIsWrapped() throws IOException, ServletException {
         xssFilter.doFilter(request, response, chain);
         verify(chain).doFilter(any(XSSRequestWrapper.class), eq(response));
     }
 
     // Testa se o método doFilter não lança exceções
     @Test
-    void testDoFilterDoesNotThrowException() {
-        assertDoesNotThrow(() -> xssFilter.doFilter(request, response, chain));
+    public void testDoFilterDoesNotThrowException() {
+         try {
+            xssFilter.doFilter(request, response, chain);
+        } catch (Exception e) {
+            // Caso alguma exceção seja lançada, o teste falha
+            fail("O método doGet não deve lançar exceção");
+        }
     }
 }
