@@ -2,8 +2,8 @@ package customer;
 
 import models.Customer;
 import models.Seat;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -40,9 +40,9 @@ public class CurrentBookingTest {
 
     private ArrayList<Seat> seats;
 
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
+    @Before
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
 
         seats = new ArrayList<>();
         seats.add(new Seat(1, null, null, customer));
@@ -54,43 +54,35 @@ public class CurrentBookingTest {
         when(request.getRequestDispatcher("CurrentBooking.jsp")).thenReturn(requestDispatcher);
     }
 
-    // Testa se os assentos são definidos corretamente no doGet
     @Test
-    void testSeatsAreSetInDoGet() throws ServletException, IOException {
+    public void testDoGetSetsSeatsAndForwards() throws ServletException, IOException {
         currentBooking.doGet(request, response);
-        verify(request).setAttribute("seats", seats);
-    }
 
-    // Testa se o dispatcher é chamado corretamente no doGet
-    @Test
-    void testDispatcherIsCalledInDoGet() throws ServletException, IOException {
-        currentBooking.doGet(request, response);
+        verify(request).setAttribute("seats", seats);
+
         verify(requestDispatcher).forward(request, response);
     }
 
-    // Testa se o método doGet não lança exceções
     @Test
-    void testDoGetDoesNotThrowException() {
-        assertDoesNotThrow(() -> currentBooking.doGet(request, response));
-    }
-
-    // Testa se os assentos são definidos corretamente no doPost
-    @Test
-    void testSeatsAreSetInDoPost() throws ServletException, IOException {
+    public void testDoPostSetsSeatsAndForwards() throws ServletException, IOException {
         currentBooking.doPost(request, response);
+
         verify(request).setAttribute("seats", seats);
-    }
 
-    // Testa se o dispatcher é chamado corretamente no doPost
-    @Test
-    void testDispatcherIsCalledInDoPost() throws ServletException, IOException {
-        currentBooking.doPost(request, response);
         verify(requestDispatcher).forward(request, response);
     }
 
-    // Testa se o método doPost não lança exceções
-    @Test
-    void testDoPostDoesNotThrowException() {
-        assertDoesNotThrow(() -> currentBooking.doPost(request, response));
+    @Test(expected = NullPointerException.class)
+    public void testDoGetThrowsExceptionForNullCustomer() throws ServletException, IOException {
+        when(session.getAttribute("customer")).thenReturn(null);
+
+        currentBooking.doGet(request, response);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testDoPostThrowsExceptionForNullCustomer() throws ServletException, IOException {
+        when(session.getAttribute("customer")).thenReturn(null);
+
+        currentBooking.doPost(request, response);
     }
 }
