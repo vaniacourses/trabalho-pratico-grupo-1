@@ -1,33 +1,32 @@
+
 package models;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
 
 public class EmployeeTest {
 
     private Employee employee;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         employee = new Employee("John Doe", "john.doe@example.com", "Manager");
     }
 
-    // Testa se o nome é inicializado corretamente
     @Test
-    void testNameInitialization() {
+    public void testNameInitialization() {
         assertEquals("John Doe", employee.name);
     }
 
-    // Testa se o email é inicializado corretamente
     @Test
-    void testEmailInitialization() {
+    public void testEmailInitialization() {
         assertEquals("john.doe@example.com", employee.email);
     }
 
-    // Testa se a designação do empregado é inicializada corretamente
     @Test
-    void testEmployeeDesignationInitialization() {
+    public void testEmployeeDesignationInitialization() {
         assertEquals("Manager", employee.employeeDesignation);
     }
 }

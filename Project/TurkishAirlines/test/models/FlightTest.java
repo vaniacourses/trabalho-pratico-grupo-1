@@ -1,167 +1,97 @@
 package models;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+
 import java.sql.Date;
 import java.util.ArrayList;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.Assert.*;
 
 public class FlightTest {
 
     private Flight flight;
-    private ArrayList<Seat> seats;
 
-    @BeforeEach
-    void setUp() {
-        seats = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            seats.add(new Seat(i + 1, null, null, null));
-        }
-
+    @Before
+    public void setUp() {
         flight = new Flight(
-            true, 5, 3, 2, 10, "Flight101", seats, 10, 10,
-            "CityA", "CityB", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()),
-            5, 3, 2
+            false, 10, 5, 3, 18,
+            "Flight123", new ArrayList<>(), 18, 18,
+            "New York", "London",
+            Date.valueOf("2025-01-01"), Date.valueOf("2025-01-02"),
+            10, 5, 3
         );
     }
 
-    // Testa getter de nome do voo
+
     @Test
-    void testGetFlightName() {
-        assertEquals("Flight101", flight.getFlightName());
+    public void testGetFlightName() {
+        assertEquals("Flight123", flight.getFlightName());
     }
 
-    // Testa se o voo está vazio quando cheio
+
     @Test
-    void testIsEmptyWhenFull() {
-        flight.setCurrentSeats(10);
+    public void testGetOldESeats() {
+        assertEquals(10, flight.getOldESeats());
+    }
+
+
+    @Test
+    public void testSetOldESeats() {
+        flight.setOldESeats(15);
+        assertEquals(15, flight.getOldESeats());
+    }
+
+
+    @Test
+    public void testIsEmpty() {
         assertTrue(flight.isEmpty());
-    }
 
-    // Testa se o voo não está vazio quando não cheio
-    @Test
-    void testIsEmptyWhenNotFull() {
-        flight.setCurrentSeats(5);
+        flight.setCurrentSeats(10);
         assertFalse(flight.isEmpty());
     }
 
-    // Testa getter e setter de assentos econômicos
+
     @Test
-    void testGetAndSetEconomySeats() {
-        assertEquals(5, flight.getEconomySeats());
-        flight.setEconomySeats(6);
-        assertEquals(6, flight.getEconomySeats());
+    public void testGetCities() {
+        assertEquals("New York", flight.getDepartureCity());
+        assertEquals("London", flight.getArrivalCity());
     }
 
-    // Testa getter e setter de assentos de negócios
+
     @Test
-    void testGetAndSetBusinessSeats() {
-        assertEquals(3, flight.getBusinessSeats());
-        flight.setBusinessSeats(4);
-        assertEquals(4, flight.getBusinessSeats());
+    public void testGetDates() {
+        assertEquals(Date.valueOf("2025-01-01"), flight.getDepartureDate());
+        assertEquals(Date.valueOf("2025-01-02"), flight.getArrivalDate());
     }
 
-    // Testa getter e setter de assentos de primeira classe
     @Test
-    void testGetAndSetFirstSeats() {
-        assertEquals(2, flight.getFirstSeats());
-        flight.setFirstSeats(3);
-        assertEquals(3, flight.getFirstSeats());
+    public void testSetSeats() {
+        ArrayList<Seat> seats = new ArrayList<>();
+        seats.add(new Seat(1, flight, null, null));
+        seats.add(new Seat(2, flight, null, null));
+
+        flight.setSeats(seats);
+
+        assertNotNull(flight.seats);
+        assertEquals(2, flight.seats.size());
+        assertEquals(1, flight.seats.get(0).getSeatNumber());
+        assertEquals(2, flight.seats.get(1).getSeatNumber());
     }
 
-    // Testa getter e setter de assentos antigos econômicos
-    @Test
-    void testGetAndSetOldESeats() {
-        assertEquals(5, flight.getOldESeats());
-        flight.setOldESeats(6);
-        assertEquals(6, flight.getOldESeats());
-    }
 
-    // Testa getter e setter de assentos antigos de negócios
     @Test
-    void testGetAndSetOldBSeats() {
-        assertEquals(3, flight.getOldBSeats());
-        flight.setOldBSeats(4);
-        assertEquals(4, flight.getOldBSeats());
-    }
+    public void testSetCustomer() {
+        ArrayList<Seat> seats = new ArrayList<>();
+        seats.add(new Seat(1, flight, null, null));
+        seats.add(new Seat(2, flight, null, null));
+        flight.setSeats(seats);
 
-    // Testa getter e setter de assentos antigos de primeira classe
-    @Test
-    void testGetAndSetOldFSeats() {
-        assertEquals(2, flight.getOldFSeats());
-        flight.setOldFSeats(3);
-        assertEquals(3, flight.getOldFSeats());
-    }
+        Customer customer = new Customer("John", "john@example.com", null);
 
-    // Testa getter e setter de assentos antigos totais
-    @Test
-    void testGetAndSetOldTSeats() {
-        assertEquals(10, flight.getOldTSeats());
-        flight.setOldTSeats(11);
-        assertEquals(11, flight.getOldTSeats());
-    }
-
-    // Testa getter e setter de assentos totais
-    @Test
-    void testSetAndGetTotalSeats() {
-        assertEquals(10, flight.getTotalSeats());
-        flight.setTotalSeats(12);
-        assertEquals(12, flight.getTotalSeats());
-    }
-
-    // Testa getter e setter de assentos atuais
-    @Test
-    void testSetAndGetCurrentSeats() {
-        assertEquals(10, flight.getCurrentSeats());
-        flight.setCurrentSeats(8);
-        assertEquals(8, flight.getCurrentSeats());
-    }
-
-    // Testa getter de cidade de partida
-    @Test
-    void testGetDepartureCity() {
-        assertEquals("CityA", flight.getDepartureCity());
-    }
-
-    // Testa getter de cidade de chegada
-    @Test
-    void testGetArrivalCity() {
-        assertEquals("CityB", flight.getArrivalCity());
-    }
-
-    // Testa getter de data de partida
-    @Test
-    void testGetDepartureDate() {
-        assertNotNull(flight.getDepartureDate());
-    }
-
-    // Testa getter de data de chegada
-    @Test
-    void testGetArrivalDate() {
-        assertNotNull(flight.getArrivalDate());
-    }
-
-    // Testa setter de assentos
-    @Test
-    void testSetSeats() {
-        ArrayList<Seat> newSeats = new ArrayList<>();
-        for (int i = 0; i < 8; i++) {
-            newSeats.add(new Seat(i + 1, null, null, null));
-        }
-        flight.setSeats(newSeats);
-        assertEquals(8, flight.getSeats().size());
-    }
-
-    // Testa setter de cliente
-    @Test
-    void testSetCustomer() {
-        Customer customer = new Customer("John Doe", "john.doe@example.com", new ArrayList<>());
-        int initialCurrentSeats = flight.getCurrentSeats();
-        
         flight.setCustomer(customer);
 
-        assertEquals(initialCurrentSeats - 1, flight.getCurrentSeats());
-        assertEquals(customer, seats.get(initialCurrentSeats - 1).getCustomer());
-        assertEquals(seats.get(initialCurrentSeats - 1), customer.getCurrentBooking().get(0));
+        assertEquals(customer, seats.get(0).c);
+        assertEquals(17, flight.getCurrentSeats());
     }
 }

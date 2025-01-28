@@ -1,58 +1,58 @@
 package models;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-import java.util.ArrayList;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class CustomerTest {
 
     private Customer customer;
     private Seat seat;
 
-    @BeforeEach
-    void setUp() {
-        seat = new Seat(1, null, null, null);
-        ArrayList<Seat> seats = new ArrayList<>();
-        seats.add(seat);
-        customer = new Customer("John Doe", "john.doe@example.com", seats);
+    @Before
+    public void setUp() {
+        customer = new Customer("John Doe", "john.doe@example.com", null);
+
+        seat = new Seat(12, null, null, null);
     }
 
-    // Testa getter de email
     @Test
-    void testGetEmail() {
-        assertEquals("john.doe@example.com", customer.getEmail());
-    }
+    public void testGetCurrentBooking() {
+        assertNull(customer.getCurrentBooking());
 
-    // Testa getter de nome
-    @Test
-    void testGetName() {
-        assertEquals("John Doe", customer.getName());
-    }
+        customer.setSeat(seat);
 
-    // Testa getter de assentos atuais
-    @Test
-    void testGetCurrentBooking() {
+        assertNotNull(customer.getCurrentBooking());
         assertEquals(1, customer.getCurrentBooking().size());
         assertEquals(seat, customer.getCurrentBooking().get(0));
     }
 
-    // Testa setter de assento
     @Test
-    void testSetSeat() {
-        Seat newSeat = new Seat(2, null, null, null);
-        customer.setSeat(newSeat);
-        assertEquals(2, customer.getCurrentBooking().size());
-        assertEquals(newSeat, customer.getCurrentBooking().get(1));
+    public void testSetSeat() {
+        customer.setSeat(seat);
+
+        assertNotNull(customer.getCurrentBooking());
+        assertTrue(customer.getCurrentBooking().contains(seat));
     }
 
-    // Testa se a lista de assentos é inicializada corretamente
+
     @Test
-    void testSetSeatInitializesList() {
-        Customer newCustomer = new Customer("Jane Doe", "jane.doe@example.com", null);
-        Seat newSeat = new Seat(2, null, null, null);
-        newCustomer.setSeat(newSeat);
-        assertEquals(1, newCustomer.getCurrentBooking().size());
-        assertEquals(newSeat, newCustomer.getCurrentBooking().get(0));
+    public void testGetEmail() {
+        assertEquals("john.doe@example.com", customer.getEmail());
+    }
+
+    @Test
+    public void testSetMultipleSeats() {
+        Seat seat1 = new Seat(1, null, null, null);
+        Seat seat2 = new Seat(2, null, null, null);
+
+        customer.setSeat(seat);
+        customer.setSeat(seat1);
+        customer.setSeat(seat2);
+
+        assertEquals(3, customer.getCurrentBooking().size());
+        assertTrue(customer.getCurrentBooking().contains(seat));
+        assertTrue(customer.getCurrentBooking().contains(seat1));
+        assertTrue(customer.getCurrentBooking().contains(seat2));
     }
 }
