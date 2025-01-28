@@ -22,47 +22,100 @@ public class ChangeFeatures extends HttpServlet {
 
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         ArrayList<Features> f = (ArrayList<Features>) (getServletContext().getAttribute("features"));
+        // Dentro do método doPost
+        
         
         char[] s = {'e','b','f'};
-                
+        System.out.println(s);
         
-        for (int i = 0; i < 3; i++)
-        {
-            //Saving old values
-            (f.get(i)).setNewSeatPitch( f.get(i).getSeatPitch() );
-            (f.get(i)).setNewSeatWidth( f.get(i).getSeatWidth() );            
-            (f.get(i)).setNewVideoType( f.get(i).getVideoType() );            
-            (f.get(i)).setNewPowerType( f.get(i).getPowerType() );            
-            (f.get(i)).setNewSeatType( f.get(i).getSeatType() );            
-            (f.get(i)).setNewPrice( f.get(i).getPrice() );
-            
-            //Setting new values temporarily
-            (f.get(i)).setSeatPitch( (Double.parseDouble(request.getParameter("seat_pitch_" + s[i])))  );
-            (f.get(i)).setSeatWidth( (Double.parseDouble(request.getParameter("seat_width_" + s[i])))  );
-            (f.get(i)).setVideoType( (request.getParameter("video_" + s[i]))  );
-            (f.get(i)).setPowerType( (request.getParameter("power_" + s[i]))  );
-            (f.get(i)).setSeatType ( (request.getParameter("seat_type_" + s[i]))  );
-            (f.get(i)).setPrice ( Integer.parseInt(request.getParameter("price_" + s[i]))  );            
-            
+        if (f == null || f.size() < 3) {
+            System.out.println("Lista de Features não configurada ou tamanho insuficiente.");
+            return;
         }
         
-        f.get(1).setNewWifi( f.get(1).getWifi());
-        f.get(2).setNewWifi( f.get(2).getWifi());
-       
-        f.get(1).setWifi( request.getParameter("wifi_b"));
-        f.get(2).setWifi( request.getParameter("wifi_f"));
         
-        f.get(2).setNewSpecialFood(f.get(2).getSpecialFood());
-        f.get(2).setSpecialFood( request.getParameter("special_food_f"));       
+                
         
-        Features.isChanged = true;
-        
-        response.sendRedirect("ChangeFeatures.jsp");
+        System.out.println("Verificando lista de Features: " + f.size());
+        if (f != null && f.size() >= 3) {
+            System.out.println("Entrando no loop...");
+            for (int i = 0; i < 3; i++) {
+                System.out.println("Entrando na iteração " + i);
+                //Saving old values
+                (f.get(i)).setNewSeatPitch( f.get(i).getSeatPitch() );
+                (f.get(i)).setNewSeatWidth( f.get(i).getSeatWidth() );            
+                (f.get(i)).setNewVideoType( f.get(i).getVideoType() );            
+                (f.get(i)).setNewPowerType( f.get(i).getPowerType() );            
+                (f.get(i)).setNewSeatType( f.get(i).getSeatType() );            
+                (f.get(i)).setNewPrice( f.get(i).getPrice() );
+
+                // Pegando e imprimindo os parâmetros para cada feature
+                String seatPitchParam = request.getParameter("seat_pitch_" + s[i]);
+                System.out.println("seat_pitch_" + s[i] + ": " + seatPitchParam);
+                if (seatPitchParam != null && !seatPitchParam.isEmpty()) {
+                    (f.get(i)).setSeatPitch(Double.parseDouble(seatPitchParam));
+                }
+
+                String seatWidthParam = request.getParameter("seat_width_" + s[i]);
+                System.out.println("seat_width_" + s[i] + ": " + seatWidthParam);
+                if (seatWidthParam != null && !seatWidthParam.isEmpty()) {
+                    (f.get(i)).setSeatWidth(Double.parseDouble(seatWidthParam));
+                }
+
+                String videoTypeParam = request.getParameter("video_" + s[i]);
+                System.out.println("video_" + s[i] + ": " + videoTypeParam);
+                if (videoTypeParam != null && !videoTypeParam.isEmpty()) {
+                    (f.get(i)).setVideoType(videoTypeParam);
+                }
+
+                String powerTypeParam = request.getParameter("power_" + s[i]);
+                System.out.println("power_" + s[i] + ": " + powerTypeParam);
+                if (powerTypeParam != null && !powerTypeParam.isEmpty()) {
+                    (f.get(i)).setPowerType(powerTypeParam);
+                }
+
+                String seatTypeParam = request.getParameter("seat_type_" + s[i]);
+                System.out.println("seat_type_" + s[i] + ": " + seatTypeParam);
+                if (seatTypeParam != null && !seatTypeParam.isEmpty()) {
+                    (f.get(i)).setSeatType(seatTypeParam);
+                }
+
+                String priceParam = request.getParameter("price_" + s[i]);
+                System.out.println("price_" + s[i] + ": " + priceParam);
+                if (priceParam != null && !priceParam.isEmpty()) {
+                    (f.get(i)).setPrice(Integer.parseInt(priceParam));
+                }
+            }
+
+            // Verificando e configurando Wi-Fi para os tipos b e f
+            String wifiB = request.getParameter("wifi_b");
+            System.out.println("wifi_b: " + wifiB);
+            if (wifiB != null && !wifiB.isEmpty()) {
+                f.get(1).setWifi(wifiB);
+            }
+
+            String wifiF = request.getParameter("wifi_f");
+            System.out.println("wifi_f: " + wifiF);
+            if (wifiF != null && !wifiF.isEmpty()) {
+                f.get(2).setWifi(wifiF);
+            }
+
+            // Configurando comida especial para o tipo f
+            String specialFoodF = request.getParameter("special_food_f");
+            System.out.println("special_food_f: " + specialFoodF);
+            if (specialFoodF != null && !specialFoodF.isEmpty()) {
+                f.get(2).setSpecialFood(specialFoodF);
+            }   
+
+            // Marcando que houve uma mudança nos valores
+            Features.isChanged = true;
+
+            // Redirecionando para a página de mudança de features
+            response.sendRedirect("ChangeFeatures.jsp");     
+        }
     }
-
-
-}
+}        

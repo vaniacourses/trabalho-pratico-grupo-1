@@ -72,7 +72,29 @@ public class Features {
         specialFood = sf;
         newSpecialFood = newSf;        
     }
-    
+    // Sobrescrevendo o método toString para exibir as informações de maneira legível
+    @Override
+    public String toString() {
+        return "Features{" +
+                "type=" + type +
+                ", price=" + price +
+                ", newPrice=" + newPrice +
+                ", seatPitch=" + seatPitch +
+                ", seatWidth=" + seatWidth +
+                ", newSeatPitch=" + newSeatPitch +
+                ", newSeatWidth=" + newSeatWidth +
+                ", videoType='" + videoType + '\'' +
+                ", newVideoType='" + newVideoType + '\'' +
+                ", seatType='" + seatType + '\'' +
+                ", newSeatType='" + newSeatType + '\'' +
+                ", powerType='" + powerType + '\'' +
+                ", newPowerType='" + newPowerType + '\'' +
+                ", wifi='" + wifi + '\'' +
+                ", newWifi='" + newWifi + '\'' +
+                ", specialFood='" + specialFood + '\'' +
+                ", newSpecialFood='" + newSpecialFood + '\'' +
+                '}';
+    }
     
     public int getPrice()
     {

@@ -86,6 +86,7 @@
         <java classname="org.junit.runner.JUnitCore" fork="true" classpathref="project.classpath">
             <arg value="admin.LoginManagerTest"/>
             <arg value="admin.LogoutManagerTest"/>
+            <arg value="admin.ChangeFeaturesTest"/>
         </java>
     </target>
 </project>

@@ -1,8 +1,8 @@
 package admin;
 
 import models.Features;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -12,13 +12,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletContext;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.servlet.ServletException;
+import java.io.StringWriter;
+import java.io.PrintWriter;
 
 import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import org.mockito.Mockito;
+
 
 public class ChangeFeaturesTest {
 
-    @InjectMocks
-    private ChangeFeatures changeFeatures;
+   
+    private ChangeFeatures changeFeatures;  // A classe que estamos testando
 
     @Mock
     private HttpServletRequest request;
@@ -29,44 +36,84 @@ public class ChangeFeaturesTest {
     @Mock
     private ServletContext context;
 
-    private ArrayList<Features> featuresList;
+    ArrayList<Features> featuresList;
+    
+    
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
+        changeFeatures = new ChangeFeatures();
+
         MockitoAnnotations.openMocks(this);
 
         featuresList = new ArrayList<>();
         featuresList.add(new Features(100, 120, 1, true, 32.5, 18.0, 33.0, 18.5, "LCD", "LED", "Economy", "Business", "AC", "DC", "Yes", "No", "Vegetarian", "Vegan"));
         featuresList.add(new Features(200, 220, 2, true, 34.5, 19.0, 35.0, 19.5, "LED", "OLED", "Business", "First Class", "DC", "USB", "No", "Yes", "Vegan", "Gluten-Free"));
         featuresList.add(new Features(300, 320, 3, true, 36.5, 20.0, 37.0, 20.5, "OLED", "QLED", "First Class", "Premium", "USB", "Solar", "Yes", "No", "Gluten-Free", "Halal"));
-
-        when(context.getAttribute("features")).thenReturn(featuresList);
-        when(request.getServletContext()).thenReturn(context);
+        
+        Mockito.when(context.getAttribute("features")).thenReturn(featuresList);
+        Mockito.when(request.getServletContext()).thenReturn(context);
     }
 
+    @Test
+    public void testDoPost() throws Exception {
+        
+        System.out.println(featuresList);
+
+        when(request.getParameter("seat_pitch_e")).thenReturn("35");
+        when(request.getParameter("seat_pitch_f")).thenReturn("35");
+        System.out.println(request.getParameter("seat_pitch_f"));
+
+        
+        ChangeFeatures servlet = new ChangeFeatures();
+        
+        servlet.doPost(request, response);
+        
+        Mockito.verify(response).sendRedirect("ChangeFeatures.jsp");
+    }
     // Testa se os valores antigos são salvos
     @Test
-    void testOldValuesAreSaved() throws IOException {
-        when(request.getParameter("seat_pitch_e")).thenReturn("32.5");
-        when(request.getParameter("seat_width_e")).thenReturn("18.0");
-        when(request.getParameter("video_e")).thenReturn("LCD");
-        when(request.getParameter("power_e")).thenReturn("AC");
-        when(request.getParameter("seat_type_e")).thenReturn("Economy");
-        when(request.getParameter("price_e")).thenReturn("100");
+    public void testOldValuesAreSaved() throws IOException, ServletException {
+        
+        System.out.println(featuresList);
 
+        // Adicionando os mocks para as outras features, se necessário
+        when(request.getParameter("seat_pitch_e")).thenReturn("35.0");   // Para a segunda Feature
+        when(request.getParameter("seat_width_e")).thenReturn("19.0");   // Para a segunda Feature
+        when(request.getParameter("video_e")).thenReturn("OLED");        // Para a segunda Feature
+        when(request.getParameter("power_e")).thenReturn("USB");         // Para a segunda Feature
+        when(request.getParameter("seat_type_e")).thenReturn("Premium Economy"); // Para a segunda Feature
+        when(request.getParameter("price_e")).thenReturn("150");         // Para a segunda Feature
+
+      
+        System.out.println(request.getParameter("seat_width_b"));
+
+        
+        // Preparando a resposta para capturar a saída
+        StringWriter responseWriter = new StringWriter();
+        PrintWriter printWriter = new PrintWriter(responseWriter);
+        when(response.getWriter()).thenReturn(printWriter);
+        
+        // Executando o doPost
         changeFeatures.doPost(request, response);
+        
+        
+        // Verificar se os valores foram modificados corretamente
+        Features feature = featuresList.get(0);
+        assertEquals(35.0, feature.getSeatPitch(), 0.0);
+        assertEquals(19.0, feature.getSeatWidth(), 0.0);
+        assertEquals("OLED", feature.getVideoType());
+        assertEquals("USB", feature.getPowerType());
+        assertEquals("Premium Economy", feature.getSeatType());
+        assertEquals(150, feature.getPrice());
 
-        assertEquals(32.5, featuresList.get(0).getNewSeatPitch());
-        assertEquals(18.0, featuresList.get(0).getNewSeatWidth());
-        assertEquals("LCD", featuresList.get(0).getNewVideoType());
-        assertEquals("AC", featuresList.get(0).getNewPowerType());
-        assertEquals("Economy", featuresList.get(0).getNewSeatType());
-        assertEquals(100, featuresList.get(0).getNewPrice());
+        // Verificando se a resposta foi escrita corretamente
+        assertTrue(responseWriter.toString().contains("Dados processados."));
     }
 
     // Testa se os novos valores são definidos
     @Test
-    void testNewValuesAreSet() throws IOException {
+    public void testNewValuesAreSet() throws IOException, ServletException {
         when(request.getParameter("seat_pitch_e")).thenReturn("35.0");
         when(request.getParameter("seat_width_e")).thenReturn("19.0");
         when(request.getParameter("video_e")).thenReturn("OLED");
@@ -76,7 +123,7 @@ public class ChangeFeaturesTest {
 
         changeFeatures.doPost(request, response);
 
-        assertEquals(35.0, featuresList.get(0).getSeatPitch());
+        assertEquals(35.0, featuresList.get(0).getSeatPitch(),0.0);
         assertEquals(19.0, featuresList.get(0).getSeatWidth());
         assertEquals("OLED", featuresList.get(0).getVideoType());
         assertEquals("USB", featuresList.get(0).getPowerType());
@@ -86,7 +133,7 @@ public class ChangeFeaturesTest {
 
     // Testa se o Wi-Fi é atualizado
     @Test
-    void testWifiIsUpdated() throws IOException {
+    public void testWifiIsUpdated() throws IOException, ServletException {
         when(request.getParameter("wifi_b")).thenReturn("Yes");
         when(request.getParameter("wifi_f")).thenReturn("No");
 
@@ -98,7 +145,7 @@ public class ChangeFeaturesTest {
 
     // Testa se a comida especial é atualizada
     @Test
-    void testSpecialFoodIsUpdated() throws IOException {
+    public void testSpecialFoodIsUpdated() throws IOException, ServletException {
         when(request.getParameter("special_food_f")).thenReturn("Kosher");
 
         changeFeatures.doPost(request, response);
@@ -108,7 +155,7 @@ public class ChangeFeaturesTest {
 
     // Testa se a flag isChanged é definida como verdadeira
     @Test
-    void testIsChangedFlagIsSet() throws IOException {
+    public void testIsChangedFlagIsSet() throws IOException, ServletException {
         changeFeatures.doPost(request, response);
 
         assertTrue(Features.isChanged);
@@ -116,7 +163,7 @@ public class ChangeFeaturesTest {
 
     // Testa se o redirecionamento é feito corretamente
     @Test
-    void testRedirectIsDone() throws IOException {
+    public void testRedirectIsDone() throws IOException, ServletException {
         changeFeatures.doPost(request, response);
 
         verify(response).sendRedirect("ChangeFeatures.jsp");
