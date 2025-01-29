@@ -1,11 +1,5 @@
 package admin;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import models.Features;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,108 +8,117 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author MuhammadHarris
- */
 public class ChangeFeatures extends HttpServlet {
 
+    private static final char[] TYPES = {'e', 'b', 'f'};
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        ArrayList<Features> f = (ArrayList<Features>) (getServletContext().getAttribute("features"));
-        // Dentro do método doPost
-        
-        
-        char[] s = {'e','b','f'};
-        System.out.println(s);
-        
-        if (f == null || f.size() < 3) {
-            System.out.println("Lista de Features não configurada ou tamanho insuficiente.");
+        ArrayList<Features> featuresList = (ArrayList<Features>) getServletContext().getAttribute("features");
+
+        if (featuresList == null || featuresList.size() < 3) {
             return;
         }
-        
-        
-                
-        
-        System.out.println("Verificando lista de Features: " + f.size());
-        if (f != null && f.size() >= 3) {
-            System.out.println("Entrando no loop...");
-            for (int i = 0; i < 3; i++) {
-                System.out.println("Entrando na iteração " + i);
-                //Saving old values
-                (f.get(i)).setNewSeatPitch( f.get(i).getSeatPitch() );
-                (f.get(i)).setNewSeatWidth( f.get(i).getSeatWidth() );            
-                (f.get(i)).setNewVideoType( f.get(i).getVideoType() );            
-                (f.get(i)).setNewPowerType( f.get(i).getPowerType() );            
-                (f.get(i)).setNewSeatType( f.get(i).getSeatType() );            
-                (f.get(i)).setNewPrice( f.get(i).getPrice() );
 
-                // Pegando e imprimindo os parâmetros para cada feature
-                String seatPitchParam = request.getParameter("seat_pitch_" + s[i]);
-                System.out.println("seat_pitch_" + s[i] + ": " + seatPitchParam);
-                if (seatPitchParam != null && !seatPitchParam.isEmpty()) {
-                    (f.get(i)).setSeatPitch(Double.parseDouble(seatPitchParam));
-                }
+        for (int i = 0; i < 3; i++) {
+            updateFeatureFromRequest(featuresList.get(i), request, TYPES[i]);
+        }
 
-                String seatWidthParam = request.getParameter("seat_width_" + s[i]);
-                System.out.println("seat_width_" + s[i] + ": " + seatWidthParam);
-                if (seatWidthParam != null && !seatWidthParam.isEmpty()) {
-                    (f.get(i)).setSeatWidth(Double.parseDouble(seatWidthParam));
-                }
+        configureWifiAndFood(request, featuresList);
 
-                String videoTypeParam = request.getParameter("video_" + s[i]);
-                System.out.println("video_" + s[i] + ": " + videoTypeParam);
-                if (videoTypeParam != null && !videoTypeParam.isEmpty()) {
-                    (f.get(i)).setVideoType(videoTypeParam);
-                }
+        // Marcando que houve uma mudança nos valores
+        Features.isChanged = true;
 
-                String powerTypeParam = request.getParameter("power_" + s[i]);
-                System.out.println("power_" + s[i] + ": " + powerTypeParam);
-                if (powerTypeParam != null && !powerTypeParam.isEmpty()) {
-                    (f.get(i)).setPowerType(powerTypeParam);
-                }
+        // Redirecionando para a página de mudança de features
+        response.sendRedirect("ChangeFeatures.jsp");
+    }
 
-                String seatTypeParam = request.getParameter("seat_type_" + s[i]);
-                System.out.println("seat_type_" + s[i] + ": " + seatTypeParam);
-                if (seatTypeParam != null && !seatTypeParam.isEmpty()) {
-                    (f.get(i)).setSeatType(seatTypeParam);
-                }
+    // Método para atualizar as informações da feature a partir do request
+    private void updateFeatureFromRequest(Features feature, HttpServletRequest request, char type) {
 
-                String priceParam = request.getParameter("price_" + s[i]);
-                System.out.println("price_" + s[i] + ": " + priceParam);
-                if (priceParam != null && !priceParam.isEmpty()) {
-                    (f.get(i)).setPrice(Integer.parseInt(priceParam));
-                }
-            }
+        // Salvando os valores antigos
+        saveOldValues(feature);
 
-            // Verificando e configurando Wi-Fi para os tipos b e f
-            String wifiB = request.getParameter("wifi_b");
-            System.out.println("wifi_b: " + wifiB);
-            if (wifiB != null && !wifiB.isEmpty()) {
-                f.get(1).setWifi(wifiB);
-            }
+        // Atualizando os novos valores a partir do request
+        updateFeatureParameter(feature, request, "seat_pitch_" + type, this::setSeatPitch);
+        updateFeatureParameter(feature, request, "seat_width_" + type, this::setSeatWidth);
+        updateFeatureParameter(feature, request, "video_" + type, this::setVideoType);
+        updateFeatureParameter(feature, request, "power_" + type, this::setPowerType);
+        updateFeatureParameter(feature, request, "seat_type_" + type, this::setSeatType);
+        updateFeatureParameter(feature, request, "price_" + type, this::setPrice);
+    }
 
-            String wifiF = request.getParameter("wifi_f");
-            System.out.println("wifi_f: " + wifiF);
-            if (wifiF != null && !wifiF.isEmpty()) {
-                f.get(2).setWifi(wifiF);
-            }
+    // Método para salvar os valores antigos da feature
+    private void saveOldValues(Features feature) {
+        feature.setNewSeatPitch(feature.getSeatPitch());
+        feature.setNewSeatWidth(feature.getSeatWidth());
+        feature.setNewVideoType(feature.getVideoType());
+        feature.setNewPowerType(feature.getPowerType());
+        feature.setNewSeatType(feature.getSeatType());
+        feature.setNewPrice(feature.getPrice());
+    }
 
-            // Configurando comida especial para o tipo f
-            String specialFoodF = request.getParameter("special_food_f");
-            System.out.println("special_food_f: " + specialFoodF);
-            if (specialFoodF != null && !specialFoodF.isEmpty()) {
-                f.get(2).setSpecialFood(specialFoodF);
-            }   
-
-            // Marcando que houve uma mudança nos valores
-            Features.isChanged = true;
-
-            // Redirecionando para a página de mudança de features
-            response.sendRedirect("ChangeFeatures.jsp");     
+    // Método genérico para atualizar parâmetros das features
+    private void updateFeatureParameter(Features feature, HttpServletRequest request, String paramName, FeatureUpdater updater) {
+        String paramValue = request.getParameter(paramName);
+        if (paramValue != null && !paramValue.isEmpty()) {
+            updater.update(feature, paramValue);
         }
     }
-}        
+
+    // Interface para atualizar os atributos da feature
+    private interface FeatureUpdater {
+        void update(Features feature, String value);
+    }
+
+    // Métodos específicos para atualizar os atributos das features
+    private void setSeatPitch(Features feature, String value) {
+        feature.setSeatPitch(Double.parseDouble(value));
+    }
+
+    private void setSeatWidth(Features feature, String value) {
+        feature.setSeatWidth(Double.parseDouble(value));
+    }
+
+    private void setVideoType(Features feature, String value) {
+        feature.setVideoType(value);
+    }
+
+    private void setPowerType(Features feature, String value) {
+        feature.setPowerType(value);
+    }
+
+    private void setSeatType(Features feature, String value) {
+        feature.setSeatType(value);
+    }
+
+    private void setPrice(Features feature, String value) {
+        feature.setPrice(Integer.parseInt(value));
+    }
+
+    // Método para configurar Wi-Fi e comida especial para tipos específicos
+    private void configureWifiAndFood(HttpServletRequest request, ArrayList<Features> featuresList) {
+        configureWifi(request, featuresList, 1, "wifi_b");
+        configureWifi(request, featuresList, 2, "wifi_f");
+
+        configureSpecialFood(request, featuresList, 2, "special_food_f");
+    }
+
+    // Método para configurar o Wi-Fi de uma feature
+    private void configureWifi(HttpServletRequest request, ArrayList<Features> featuresList, int index, String paramName) {
+        String wifi = request.getParameter(paramName);
+        if (wifi != null && !wifi.isEmpty()) {
+            featuresList.get(index).setWifi(wifi);
+        }
+    }
+
+    // Método para configurar a comida especial de uma feature
+    private void configureSpecialFood(HttpServletRequest request, ArrayList<Features> featuresList, int index, String paramName) {
+        String specialFood = request.getParameter(paramName);
+        if (specialFood != null && !specialFood.isEmpty()) {
+            featuresList.get(index).setSpecialFood(specialFood);
+        }
+    }
+}
