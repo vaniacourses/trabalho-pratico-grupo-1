@@ -1,8 +1,8 @@
 package manager;
 
 import models.Features;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -12,6 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.ServletException;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 
 import static org.mockito.Mockito.*;
 
@@ -31,9 +37,9 @@ public class DisapproveFeaturesTest {
 
     private ArrayList<Features> featuresList;
 
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
+    @Before
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
 
         featuresList = new ArrayList<>();
         featuresList.add(new Features(100, 120, 1, true, 32.5, 18.0, 33.0, 18.5, "LCD", "LED", "Economy", "Business", "AC", "DC", "Yes", "No", "Vegetarian", "Vegan"));
@@ -46,7 +52,7 @@ public class DisapproveFeaturesTest {
 
     // Testa se os valores antigos são aplicados
     @Test
-    void testOldValuesAreApplied() throws IOException {
+    public void testOldValuesAreApplied() throws IOException {
         disapproveFeatures.doPost(request, response);
 
         for (Features feature : featuresList) {
@@ -63,7 +69,7 @@ public class DisapproveFeaturesTest {
 
     // Testa se os novos valores são resetados
     @Test
-    void testNewValuesAreReset() throws IOException {
+    public void testNewValuesAreReset() throws IOException, ServletException {
         disapproveFeatures.doPost(request, response);
 
         for (Features feature : featuresList) {
@@ -80,15 +86,19 @@ public class DisapproveFeaturesTest {
 
     // Testa se a flag isChanged é definida como falsa
     @Test
-    void testIsChangedFlagIsReset() throws IOException {
-        disapproveFeatures.doPost(request, response);
+    public void testIsChangedFlagIsReset() throws IOException {
+        try {
+            disapproveFeatures.doPost(request, response);
+        } catch (ServletException ex) {
+            Logger.getLogger(DisapproveFeaturesTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         assertFalse(Features.isChanged);
     }
 
     // Testa se o redirecionamento é feito corretamente
     @Test
-    void testRedirectIsDone() throws IOException {
+    public void testRedirectIsDone() throws IOException {
         disapproveFeatures.doPost(request, response);
 
         verify(response).sendRedirect("ApproveFeatures.jsp");
@@ -96,7 +106,7 @@ public class DisapproveFeaturesTest {
 
     // Testa se o método doPost não lança exceções
     @Test
-    void testDoPostDoesNotThrowException() {
+    public void testDoPostDoesNotThrowException() {
         assertDoesNotThrow(() -> disapproveFeatures.doPost(request, response));
     }
 }

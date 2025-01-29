@@ -40,18 +40,28 @@ public class DisapproveSeats extends HttpServlet {
             }            
         }
         
-        f.setEconomySeats(f.getOldESeats());
-        f.setBusinessSeats(f.getOldBSeats());
-        f.setFirstSeats(f.getOldFSeats());
-        f.setTotalSeats(f.getOldTSeats());
-        f.setCurrentSeats(f.getTotalSeats());
         
-        f.setOldESeats(0);
-        f.setOldBSeats(0);
-        f.setOldFSeats(0);
-        f.setOldTSeats(0);
+        if(f != null)
+        {
+            f.setEconomySeats(f.getOldESeats());
+            f.setBusinessSeats(f.getOldBSeats());
+            f.setFirstSeats(f.getOldFSeats());
+            f.setTotalSeats(f.getOldTSeats());
+            f.setCurrentSeats(f.getTotalSeats());
 
-        f.isChanged = false;
+            f.setOldESeats(0);
+            f.setOldBSeats(0);
+            f.setOldFSeats(0);
+            f.setOldTSeats(0);
+
+            f.isChanged = false;
+        }
+        else
+        {          
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "No flights available.");
+            return;
+        }
+                
         response.sendRedirect("ApproveSeats.jsp");
     }
 }
