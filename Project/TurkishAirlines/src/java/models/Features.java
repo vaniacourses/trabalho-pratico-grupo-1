@@ -1,5 +1,8 @@
 package models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,6 +18,8 @@ package models;
 public class Features {
     
     static public boolean isChanged = false;
+    // Lista estática para armazenar todas as instâncias de Features
+    static private List<Features> featuresList = new ArrayList<>();
        
     int type;
     
@@ -72,6 +77,12 @@ public class Features {
         specialFood = sf;
         newSpecialFood = newSf;        
     }
+    
+    // Método para obter todas as Features
+    public static List<Features> allFeatures() {
+        return new ArrayList<>(featuresList);  // Retorna uma nova lista para evitar manipulação externa
+    }
+    
     // Sobrescrevendo o método toString para exibir as informações de maneira legível
     @Override
     public String toString() {
