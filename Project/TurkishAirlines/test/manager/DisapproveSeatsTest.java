@@ -1,8 +1,8 @@
 package manager;
 
 import models.Flight;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import static org.junit.Assert.assertEquals;
 
 import static org.mockito.Mockito.*;
 
@@ -31,9 +32,9 @@ public class DisapproveSeatsTest {
 
     private ArrayList<Flight> flights;
 
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
+    @Before
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
 
         flights = new ArrayList<>();
         flights.add(new Flight(true, 5, 3, 2, 10, "Flight101", new ArrayList<>(), 10, 10, "CityA", "CityB", new java.sql.Date(System.currentTimeMillis()), new java.sql.Date(System.currentTimeMillis()), 5, 3, 2));
@@ -45,7 +46,7 @@ public class DisapproveSeatsTest {
 
     // Testa se os assentos antigos são restaurados
     @Test
-    void testOldSeatsAreRestored() throws IOException, ServletException {
+    public void testOldSeatsAreRestored() throws IOException, ServletException {
         when(request.getParameter("flight_name")).thenReturn("Flight101");
 
         disapproveSeats.doPost(request, response);
@@ -57,7 +58,7 @@ public class DisapproveSeatsTest {
 
     // Testa se os assentos antigos são resetados
     @Test
-    void testOldSeatsAreReset() throws IOException, ServletException {
+    public void testOldSeatsAreReset() throws IOException, ServletException {
         when(request.getParameter("flight_name")).thenReturn("Flight101");
 
         disapproveSeats.doPost(request, response);
@@ -70,7 +71,7 @@ public class DisapproveSeatsTest {
 
     // Testa se a flag isChanged é definida como falsa
     @Test
-    void testIsChangedFlagIsReset() throws IOException, ServletException {
+    public void testIsChangedFlagIsReset() throws IOException, ServletException {
         when(request.getParameter("flight_name")).thenReturn("Flight101");
 
         disapproveSeats.doPost(request, response);
@@ -80,7 +81,7 @@ public class DisapproveSeatsTest {
 
     // Testa se o redirecionamento é feito corretamente
     @Test
-    void testRedirectIsDone() throws IOException, ServletException {
+    public void testRedirectIsDone() throws IOException, ServletException {
         when(request.getParameter("flight_name")).thenReturn("Flight101");
 
         disapproveSeats.doPost(request, response);
@@ -90,7 +91,7 @@ public class DisapproveSeatsTest {
 
     // Testa se o método doPost não lança exceções
     @Test
-    void testDoPostDoesNotThrowException() {
+    public void testDoPostDoesNotThrowException() {
         when(request.getParameter("flight_name")).thenReturn("Flight101");
 
         assertDoesNotThrow(() -> disapproveSeats.doPost(request, response));
