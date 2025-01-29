@@ -34,7 +34,7 @@ public class OriginCompleterTest {
     @Before
     public void setUp() {
         // Inicializa os mocks
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
 
         // Configura o comportamento esperado
         when(request.getServletContext()).thenReturn(servletContext);
