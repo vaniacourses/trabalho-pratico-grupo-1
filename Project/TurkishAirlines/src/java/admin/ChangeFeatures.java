@@ -36,7 +36,7 @@ public class ChangeFeatures extends HttpServlet {
     }
 
     // Método para atualizar as informações da feature a partir do request
-    private void updateFeatureFromRequest(Features feature, HttpServletRequest request, char type) {
+    public void updateFeatureFromRequest(Features feature, HttpServletRequest request, char type) {
 
         // Salvando os valores antigos
         saveOldValues(feature);
@@ -51,7 +51,7 @@ public class ChangeFeatures extends HttpServlet {
     }
 
     // Método para salvar os valores antigos da feature
-    private void saveOldValues(Features feature) {
+    public void saveOldValues(Features feature) {
         feature.setNewSeatPitch(feature.getSeatPitch());
         feature.setNewSeatWidth(feature.getSeatWidth());
         feature.setNewVideoType(feature.getVideoType());
