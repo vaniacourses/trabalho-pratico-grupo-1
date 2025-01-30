@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "f309855b-b53c-4cdc-8291-090854e2511b",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29279083"
+	},
+	"item": [
+		{
+			"name": "ChangeFeaturesPage",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/TurkishAirlines/ChangeFeatures.jsp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"TurkishAirlines",
+						"ChangeFeatures.jsp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ChangeFeaturesPost",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "seat_pitch_e",
+							"value": "30",
+							"type": "text"
+						},
+						{
+							"key": "seat_pitch_b",
+							"value": "30",
+							"type": "text"
+						},
+						{
+							"key": "seat_pitch_f",
+							"value": "45",
+							"type": "text"
+						},
+						{
+							"key": "seat_width_e",
+							"value": "20.0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/TurkishAirlines/ChangeFeatures.do",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"TurkishAirlines",
+						"ChangeFeatures.do"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
