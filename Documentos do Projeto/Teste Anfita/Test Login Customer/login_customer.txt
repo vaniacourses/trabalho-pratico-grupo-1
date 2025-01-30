@@ -1,6 +1,6 @@
 ### Test generated with Antifa Framework Test Creation Tool
 
-# Login Admin
+# Login Customer
 Open the browser page at "http://localhost:8080/TurkishAirlines/".
 Define @LoginButton as "Login" located by "a.nav-link[href='Login']".
 Click on @LoginButton button.
