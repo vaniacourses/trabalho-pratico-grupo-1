@@ -1,0 +1,15 @@
+### Test generated with Antifa Framework Test Creation Tool
+
+# Login Manager
+Open the browser page at "http://localhost:8080/TurkishAirlines/".
+Define @LoginButton as "Login" located by "a.nav-link[href='Login']".
+Click on @LoginButton button.
+Define @EmailField as "Email" located by "input[name='j_username']".
+Write "haris@manager.com" to @EmailField input.
+Define @PasswordField as "Password" located by "input[name='j_password']".
+Write "m" to @PasswordField input.
+Define @SignInButton as "Sign in!" located by "button.btn".
+Click on @SignInButton button.
+Define @LogoutButton as "Logout" located by "a.list-group-item.list-group-item-action[href='Logout']".
+Click on @LogoutButton button.
+

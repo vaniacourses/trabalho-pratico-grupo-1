@@ -1,8 +1,8 @@
 package admin;
 
 import models.Flight;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletContext;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.servlet.ServletException;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import static org.mockito.Mockito.*;
 
@@ -31,8 +34,8 @@ public class SetSeatsTest {
 
     private ArrayList<Flight> flights;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         MockitoAnnotations.openMocks(this);
 
         flights = new ArrayList<>();
@@ -45,7 +48,7 @@ public class SetSeatsTest {
 
     // Testa se os assentos antigos são salvos
     @Test
-    void testOldSeatsAreSaved() throws IOException {
+    public void testOldSeatsAreSaved() throws IOException, ServletException {
         when(request.getParameter("flight_name")).thenReturn("Flight101");
         when(request.getParameter("seats_e")).thenReturn("6");
         when(request.getParameter("seats_b")).thenReturn("4");
@@ -61,7 +64,7 @@ public class SetSeatsTest {
 
     // Testa se os novos assentos são definidos
     @Test
-    void testNewSeatsAreSet() throws IOException {
+    public void testNewSeatsAreSet() throws IOException, ServletException {
         when(request.getParameter("flight_name")).thenReturn("Flight101");
         when(request.getParameter("seats_e")).thenReturn("6");
         when(request.getParameter("seats_b")).thenReturn("4");
@@ -77,7 +80,7 @@ public class SetSeatsTest {
 
     // Testa se os assentos atuais são definidos
     @Test
-    void testCurrentSeatsAreSet() throws IOException {
+    public void testCurrentSeatsAreSet() throws IOException, ServletException {
         when(request.getParameter("flight_name")).thenReturn("Flight101");
         when(request.getParameter("seats_e")).thenReturn("6");
         when(request.getParameter("seats_b")).thenReturn("4");
@@ -90,7 +93,7 @@ public class SetSeatsTest {
 
     // Testa se a flag isChanged é definida como verdadeira
     @Test
-    void testIsChangedFlagIsSet() throws IOException {
+    public void testIsChangedFlagIsSet() throws IOException, ServletException {
         when(request.getParameter("flight_name")).thenReturn("Flight101");
         when(request.getParameter("seats_e")).thenReturn("6");
         when(request.getParameter("seats_b")).thenReturn("4");
@@ -103,7 +106,7 @@ public class SetSeatsTest {
 
     // Testa se o redirecionamento é feito corretamente
     @Test
-    void testRedirectIsDone() throws IOException {
+    public void testRedirectIsDone() throws IOException, ServletException {
         when(request.getParameter("flight_name")).thenReturn("Flight101");
         when(request.getParameter("seats_e")).thenReturn("6");
         when(request.getParameter("seats_b")).thenReturn("4");
