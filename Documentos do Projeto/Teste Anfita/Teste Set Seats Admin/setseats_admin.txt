@@ -1,0 +1,45 @@
+### Test generated with Antifa Framework Test Creation Tool
+
+# Set Seats Calculate Admin
+Open the browser page at "http://localhost:8080/TurkishAirlines/"
+
+Define @LoginButton as "Login" located by "a.nav-link[href='Login']"
+Click on @LoginButton button
+
+Define @EmailField as "Email" located by "input[name='j_username']"
+Write "haris@admin.com" to @EmailField input
+
+Define @PasswordField as "Password" located by "input[name='j_password']"
+Write "a" to @PasswordField input
+
+Define @SignInButton as "Sign in!" located by "button.btn"
+Click on @SignInButton button
+
+Define @SetSeatsButton as "Set Seats" located by "a.list-group-item.list-group-item-action[href='SetSeats.jsp']"
+Click on @SetSeatsButton button
+
+Define @FlightPK789 as "PK-789" located by "input[name='flight_name'][value='PK-789']"
+Define @SeatsE_PK789 as "Seats Economy PK-789" located by "input[name='seats_e'][value='3']"
+Define @SeatsB_PK789 as "Seats Business PK-789" located by "input[name='seats_b'][value='0']"
+Define @SeatsF_PK789 as "Seats First PK-789" located by "input[name='seats_f'][value='0']"
+
+Define @FlightPK790 as "PK-790" located by "input[name='flight_name'][value='PK-790']"
+Define @SeatsE_PK790 as "Seats Economy PK-790" located by "input[name='seats_e'][value='0']"
+Define @SeatsB_PK790 as "Seats Business PK-790" located by "input[name='seats_b'][value='1']"
+Define @SeatsF_PK790 as "Seats First PK-790" located by "input[name='seats_f'][value='1']"
+
+Write "10" to @SeatsE_PK789 input
+Write "5" to @SeatsB_PK789 input
+Write "3" to @SeatsF_PK789 input
+Write "5" to @SeatsE_PK790 input
+Write "3" to @SeatsB_PK790 input
+Write "2" to @SeatsF_PK790 input
+
+Define @CalculateTotalSeatsButton as "Calculate Total Seats" located by "button.btn.btn-primary.flex-row-reverse[onclick='calculate_total();']"
+Click on @CalculateTotalSeatsButton button
+
+Define @ChangeButton as "Change" located by "button.btn.btn-primary.flex-row-reverse[type='submit']"
+Click on @ChangeButton button
+
+Define @ApprovalApprovedCell as "Approval Pending" located by "td:contains('Approval Pending')"
+
